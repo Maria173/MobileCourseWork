@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/teal_200"
+    android:orientation="vertical"
+    tools:context=".ReportsActivity">
+
+    <Button
+        android:id="@+id/reportsButtonCutleries"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:background="@color/purple_500"
+        android:minHeight="48dp"
+        android:text="Приборы по заказам"
+        android:textColor="#263238" />
+
+    <Button
+        android:id="@+id/reportsButtonLunches"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:background="@color/purple_500"
+        android:minHeight="48dp"
+        android:text="Обеды по выбранным заказам"
+        android:textColor="#263238" />
+
+    <Button
+        android:id="@+id/reportsButtonAllUsers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:background="@color/purple_500"
+        android:minHeight="48dp"
+        android:text="Все пользователи"
+        android:textColor="#263238" />
+</LinearLayout>
