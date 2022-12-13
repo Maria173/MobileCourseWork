@@ -10,38 +10,38 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.kursworkapplication.data.Order;
-import com.example.kursworkapplication.data.OrdersData;
+import com.example.kursworkapplication.data.Excursion;
+import com.example.kursworkapplication.data.ExcursionsData;
 
-public class OrderActivity extends AppCompatActivity {
+public class ExcursionActivity extends AppCompatActivity {
 
     String login = "";
     String role = "";
     int id = -1;
-    OrdersData ordersData;
+    ExcursionsData excursionsData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_order);
+        setContentView(R.layout.activity_excursion);
 
         SharedPreferences sPref = getSharedPreferences("User", MODE_PRIVATE);
         SharedPreferences.Editor ed = sPref.edit();
         login = sPref.getString("login", "");
-        ordersData = new OrdersData(this, login);
+        excursionsData = new ExcursionsData(this, login);
         role = sPref.getString("role", "");
         Intent intent = getIntent();
         id = intent.getIntExtra("Id", -1);
 
-        Button save = findViewById(R.id.orderButtonSave);
-        TextView calorie = findViewById(R.id.orderEditTextCalorie);
-        TextView wishes = findViewById(R.id.orderEditTextWishes);
+        Button save = findViewById(R.id.excursionButtonSave);
+        TextView calorie = findViewById(R.id.excursionEditTextCalorie);
+        TextView wishes = findViewById(R.id.excursionEditTextWishes);
 
         if (id != -1){
-            Order order = ordersData.getOrder(id, login);
-            if (order != null){
-                calorie.setText(String.valueOf(order.getCalorie()));
-                wishes.setText(order.getWishes());
+            Excursion excursion = excursionsData.getExcursion(id, login);
+            if (excursion != null){
+                calorie.setText(String.valueOf(excursion.getCalorie()));
+                wishes.setText(excursion.getWishes());
             }
         }
 
@@ -55,10 +55,10 @@ public class OrderActivity extends AppCompatActivity {
             int cal = Integer.parseInt(calorie.getText().toString());
             String wish = wishes.getText().toString();
             if (id != -1){
-                ordersData.updateOrder(id, cal, wish, login);
+                excursionsData.updateExcursion(id, cal, wish, login);
             }
             else {
-                ordersData.addOrder(cal, wish, login);
+                excursionsData.addExcursion(cal, wish, login);
             }
             //finish();
             Intent data = new Intent();

@@ -17,7 +17,7 @@
         android:textSize="18sp" />
 
     <EditText
-        android:id="@+id/orderEditTextCalorie"
+        android:id="@+id/excursionEditTextCalorie"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -35,7 +35,7 @@
         android:textSize="18sp" />
 
     <EditText
-        android:id="@+id/orderEditTextWishes"
+        android:id="@+id/excursionEditTextWishes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -45,7 +45,7 @@
         android:textSize="24sp" />
 
     <Button
-        android:id="@+id/orderButtonSave"
+        android:id="@+id/excursionButtonSave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"

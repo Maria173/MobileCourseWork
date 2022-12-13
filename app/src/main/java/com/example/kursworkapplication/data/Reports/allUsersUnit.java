@@ -3,9 +3,9 @@ package com.example.kursworkapplication.data.Reports;
 public class allUsersUnit {
     private String login;
     private String role;
-    private int lunchesCount;
-    private int ordersCount;
-    private int cutleriesCount;
+    private int tripsCount;
+    private int excursionsCount;
+    private int placesCount;
 
     public String getLogin() {
         return login;
@@ -23,27 +23,27 @@ public class allUsersUnit {
         this.role = role;
     }
 
-    public int getLunchesCount() {
-        return lunchesCount;
+    public int getTripsCount() {
+        return tripsCount;
     }
 
-    public void setLunchesCount(int lunchesCount) {
-        this.lunchesCount = lunchesCount;
+    public void setTripsCount(int tripsCount) {
+        this.tripsCount = tripsCount;
     }
 
-    public int getOrdersCount() {
-        return ordersCount;
+    public int getExcursionsCount() {
+        return excursionsCount;
     }
 
-    public void setOrdersCount(int ordersCount) {
-        this.ordersCount = ordersCount;
+    public void setExcursionsCount(int excursionsCount) {
+        this.excursionsCount = excursionsCount;
     }
 
-    public int getCutleriesCount() {
-        return cutleriesCount;
+    public int getPlacesCount() {
+        return placesCount;
     }
 
-    public void setCutleriesCount(int cutleriesCount) {
-        this.cutleriesCount = cutleriesCount;
+    public void setPlacesCount(int placesCount) {
+        this.placesCount = placesCount;
     }
 }

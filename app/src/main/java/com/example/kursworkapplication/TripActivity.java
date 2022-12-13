@@ -12,50 +12,50 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.kursworkapplication.data.Lunch;
-import com.example.kursworkapplication.data.LunchesData;
-import com.example.kursworkapplication.data.Order;
-import com.example.kursworkapplication.data.OrdersData;
+import com.example.kursworkapplication.data.Trip;
+import com.example.kursworkapplication.data.TripsData;
+import com.example.kursworkapplication.data.Excursion;
+import com.example.kursworkapplication.data.ExcursionsData;
 
-public class LunchActivity extends AppCompatActivity {
+public class TripActivity extends AppCompatActivity {
     String login = "";
     String role = "";
     int id = -1;
-    LunchesData lunchesData;
-    OrdersData ordersData;
+    TripsData tripsData;
+    ExcursionsData excursionsData;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lunch);
+        setContentView(R.layout.activity_trip);
 
         SharedPreferences sPref = getSharedPreferences("User", MODE_PRIVATE);
         SharedPreferences.Editor ed = sPref.edit();
         login = sPref.getString("login", "");
-        lunchesData = new LunchesData(this, login);
-        ordersData = new OrdersData(this, login);
+        tripsData = new TripsData(this, login);
+        excursionsData = new ExcursionsData(this, login);
         role = sPref.getString("role", "");
         Intent intent = getIntent();
         id = intent.getIntExtra("Id", -1);
 
-        Button save = findViewById(R.id.lunchButtonSave);
-        TextView price = findViewById(R.id.lunchEditTextPrice);
-        TextView weight = findViewById(R.id.lunchEditTextWeight);
-        Spinner spinner = findViewById(R.id.lunchSpinner);
+        Button save = findViewById(R.id.tripButtonSave);
+        TextView price = findViewById(R.id.tripEditTextPrice);
+        TextView weight = findViewById(R.id.tripEditTextWeight);
+        Spinner spinner = findViewById(R.id.tripSpinner);
 
-        ArrayAdapter<Order> adapter = new ArrayAdapter(this,
-                android.R.layout.simple_spinner_item, ordersData.findAllOrders(login));
+        ArrayAdapter<Excursion> adapter = new ArrayAdapter(this,
+                android.R.layout.simple_spinner_item, excursionsData.findAllExcursions(login));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
         if (id != -1){
-            Lunch lunch = lunchesData.getLunch(id, login);
-            if (lunch != null){
-                price.setText(String.valueOf(lunch.getPrice()));
-                weight.setText(String.valueOf(lunch.getWeight()));
+            Trip trip = tripsData.getTrip(id, login);
+            if (trip != null){
+                price.setText(String.valueOf(trip.getPrice()));
+                weight.setText(String.valueOf(trip.getWeight()));
                 for (int i = 0; i < adapter.getCount(); ++i){
-                    if(adapter.getItem(i).getId() == lunch.getOrder_id()){
+                    if(adapter.getItem(i).getId() == trip.getExcursion_id()){
                         spinner.setSelection(i);
                         break;
                     }
@@ -79,11 +79,11 @@ public class LunchActivity extends AppCompatActivity {
             int pr = Integer.parseInt(price.getText().toString());
             int we = Integer.parseInt(weight.getText().toString());
             if (id != -1){
-                lunchesData.updateLunch(id, pr, we, login,
+                tripsData.updateTrip(id, pr, we, login,
                         adapter.getItem((int) spinner.getSelectedItemId()).getId());
             }
             else {
-                lunchesData.addLunch(pr, we, login,
+                tripsData.addTrip(pr, we, login,
                         adapter.getItem((int) spinner.getSelectedItemId()).getId());
             }
             //finish();

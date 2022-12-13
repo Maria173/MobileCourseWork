@@ -9,13 +9,13 @@
     tools:context=".reportChoseOrdersActivity">
 
     <ListView
-        android:id="@+id/reportOrdersListView"
+        android:id="@+id/reportExcursionsListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1" />
 
     <Button
-        android:id="@+id/reportChoseOrders"
+        android:id="@+id/reportChoseExcursions"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="8"

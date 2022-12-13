@@ -12,52 +12,52 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.kursworkapplication.data.CutleriesData;
-import com.example.kursworkapplication.data.Cutlery;
-import com.example.kursworkapplication.data.Lunch;
-import com.example.kursworkapplication.data.LunchesData;
-import com.example.kursworkapplication.data.Order;
-import com.example.kursworkapplication.data.OrdersData;
+import com.example.kursworkapplication.data.PlacesData;
+import com.example.kursworkapplication.data.Place;
+import com.example.kursworkapplication.data.Trip;
+import com.example.kursworkapplication.data.TripsData;
+import com.example.kursworkapplication.data.Excursion;
+import com.example.kursworkapplication.data.ExcursionsData;
 
-public class CutleryActivity extends AppCompatActivity {
+public class PlaceActivity extends AppCompatActivity {
     String login = "";
     String role = "";
     int id = -1;
-    CutleriesData cutleriesData;
-    OrdersData ordersData;
+    PlacesData placesData;
+    ExcursionsData excursionsData;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cutlery);
+        setContentView(R.layout.activity_place);
 
         SharedPreferences sPref = getSharedPreferences("User", MODE_PRIVATE);
         SharedPreferences.Editor ed = sPref.edit();
         login = sPref.getString("login", "");
-        cutleriesData = new CutleriesData(this, login);
-        ordersData = new OrdersData(this, login);
+        placesData = new PlacesData(this, login);
+        excursionsData = new ExcursionsData(this, login);
         role = sPref.getString("role", "");
         Intent intent = getIntent();
         id = intent.getIntExtra("Id", -1);
 
-        Button save = findViewById(R.id.cutleryButtonSave);
-        TextView count = findViewById(R.id.cutleryEditTextCount);
-        TextView name = findViewById(R.id.cutleryEditTextName);
-        Spinner spinner = findViewById(R.id.cutlerySpinner);
+        Button save = findViewById(R.id.placeButtonSave);
+        TextView count = findViewById(R.id.placeEditTextCount);
+        TextView name = findViewById(R.id.placeEditTextName);
+        Spinner spinner = findViewById(R.id.placeSpinner);
 
-        ArrayAdapter<Order> adapter = new ArrayAdapter(this,
-                android.R.layout.simple_spinner_item, ordersData.findAllOrders(login));
+        ArrayAdapter<Excursion> adapter = new ArrayAdapter(this,
+                android.R.layout.simple_spinner_item, excursionsData.findAllExcursions(login));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
         if (id != -1){
-            Cutlery cutlery = cutleriesData.getcutlery(id, login);
-            if (cutlery != null){
-                count.setText(String.valueOf(cutlery.getCount()));
-                name.setText(cutlery.getName());
+            Place place = placesData.getplace(id, login);
+            if (place != null){
+                count.setText(String.valueOf(place.getCount()));
+                name.setText(place.getName());
                 for (int i = 0; i < adapter.getCount(); ++i){
-                    if(adapter.getItem(i).getId() == cutlery.getOrder_id()){
+                    if(adapter.getItem(i).getId() == place.getExcursion_id()){
                         spinner.setSelection(i);
                         break;
                     }
@@ -80,11 +80,11 @@ public class CutleryActivity extends AppCompatActivity {
             int co = Integer.parseInt(count.getText().toString());
             String na = name.getText().toString();
             if (id != -1){
-                cutleriesData.updatecutlery(id, co, na, login,
+                placesData.updateplace(id, co, na, login,
                         adapter.getItem((int) spinner.getSelectedItemId()).getId());
             }
             else {
-                cutleriesData.addcutlery(co, na, login,
+                placesData.addplace(co, na, login,
                         adapter.getItem((int) spinner.getSelectedItemId()).getId());
             }
             //finish();

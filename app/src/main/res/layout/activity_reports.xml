@@ -9,7 +9,7 @@
     tools:context=".ReportsActivity">
 
     <Button
-        android:id="@+id/reportsButtonCutleries"
+        android:id="@+id/reportsButtonPlaces"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
@@ -20,7 +20,7 @@
         android:textColor="#263238" />
 
     <Button
-        android:id="@+id/reportsButtonLunches"
+        android:id="@+id/reportsButtonTrips"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"

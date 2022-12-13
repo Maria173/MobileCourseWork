@@ -2,7 +2,7 @@ package com.example.kursworkapplication.data;
 
 import java.time.LocalDateTime;
 
-public class Lunch {
+public class Trip {
     private int id;
     private int price;
     private int weight;
@@ -11,7 +11,7 @@ public class Lunch {
 
     @Override
     public String toString(){
-        return String.format("Lunch = {Id = %d, price = %d, weight = %d}",
+        return String.format("Trip = {Id = %d, price = %d, weight = %d}",
                 id, price, weight);
     }
 
@@ -47,11 +47,11 @@ public class Lunch {
         this.userLogin = uerLogin;
     }
 
-    public int getOrder_id() {
+    public int getExcursion_id() {
         return order_id;
     }
 
-    public void setOrder_id(int order_id) {
+    public void setExcursion_id(int order_id) {
         this.order_id = order_id;
     }
 }

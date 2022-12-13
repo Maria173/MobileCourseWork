@@ -6,25 +6,25 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.kursworkapplication.data.Cutlery;
-import com.example.kursworkapplication.data.Order;
+import com.example.kursworkapplication.data.Excursion;
+import com.example.kursworkapplication.data.Place;
 import com.example.kursworkapplication.data.User;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class CutleriesDB {
+public class PlacesDB {
     private DBHelper dbHelper;
 
-    public CutleriesDB(Context context){
+    public PlacesDB(Context context){
         dbHelper = new DBHelper(context);
     }
 
-    public Cutlery get(Cutlery cutlery){
+    public Place get(Place place){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        Cursor c = db.query("cutleries", null, "id = ?",
-                new String[] {String.valueOf(cutlery.getId())},
+        Cursor c = db.query("places", null, "id = ?",
+                new String[] {String.valueOf(place.getId())},
                 null, null, null);
         if (c.moveToFirst()){
             int idIndex = c.getColumnIndex("id");
@@ -32,13 +32,13 @@ public class CutleriesDB {
             int weiIndex = c.getColumnIndex("name");
             int userLoginIndex = c.getColumnIndex("userLogin");
             int ordIdIndex = c.getColumnIndex("order_id");
-            Cutlery cut = new Cutlery();
+            Place cut = new Place();
             cut.setId(c.getInt(idIndex));
             cut.setCount(c.getInt(priIndex));
             cut.setName(c.getString(weiIndex));
             cut.setUserLogin(c.getString(userLoginIndex));
-            cut.setOrder_id(c.getInt(ordIdIndex));
-            if (cut.getUserLogin().equals(cutlery.getUserLogin())){
+            cut.setExcursion_id(c.getInt(ordIdIndex));
+            if (cut.getUserLogin().equals(place.getUserLogin())){
                 dbHelper.close();
                 return cut;
             }
@@ -47,50 +47,50 @@ public class CutleriesDB {
         return null;
     }
 
-    public void add(Cutlery cutlery){
+    public void add(Place place){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put("count", cutlery.getCount());
-        cv.put("name", cutlery.getName());
-        cv.put("userLogin", cutlery.getUserLogin());
-        cv.put("order_id", cutlery.getOrder_id());
-        long cutleryId = db.insert("cutleries", null, cv);
+        cv.put("count", place.getCount());
+        cv.put("name", place.getName());
+        cv.put("userLogin", place.getUserLogin());
+        cv.put("order_id", place.getExcursion_id());
+        long placeId = db.insert("places", null, cv);
         dbHelper.close();
     }
 
-    public void update(Cutlery cutlery){
-        if (get(cutlery) == null){
+    public void update(Place place){
+        if (get(place) == null){
             return;
         }
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put("count", cutlery.getCount());
-        cv.put("name", cutlery.getName());
-        cv.put("userLogin", cutlery.getUserLogin());
-        cv.put("order_id", cutlery.getOrder_id());
-        db.update("cutleries", cv, "id = ?", new String[] {String.valueOf(cutlery.getId())});
+        cv.put("count", place.getCount());
+        cv.put("name", place.getName());
+        cv.put("userLogin", place.getUserLogin());
+        cv.put("order_id", place.getExcursion_id());
+        db.update("places", cv, "id = ?", new String[] {String.valueOf(place.getId())});
         dbHelper.close();
     }
 
-    public void delete(Cutlery cutlery){
-        if(get(cutlery) == null){
+    public void delete(Place place){
+        if(get(place) == null){
             return;
         }
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        db.delete("cutleries", "id = " + cutlery.getId(), null);
+        db.delete("places", "id = " + place.getId(), null);
         dbHelper.close();
     }
 
-    public void delete(Order order){
+    public void delete(Excursion excursion){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        db.delete("cutleries", "order_id = " + order.getId(), null);
+        db.delete("places", "order_id = " + excursion.getId(), null);
         dbHelper.close();
     }
 
-    public List<Cutlery> readAll(User user){
+    public List<Place> readAll(User user){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        List<Cutlery> retList = new ArrayList<Cutlery>();
-        Cursor c = db.query("cutleries", null, "userLogin = ?",
+        List<Place> retList = new ArrayList<Place>();
+        Cursor c = db.query("places", null, "userLogin = ?",
                 new String[] {user.getLogin()}, null, null, null);
         if (c.moveToFirst()){
             int idIndex = c.getColumnIndex("id");
@@ -99,12 +99,12 @@ public class CutleriesDB {
             int userLoginIndex = c.getColumnIndex("userLogin");
             int ordIdIndex = c.getColumnIndex("order_id");
             do{
-                Cutlery cut = new Cutlery();
+                Place cut = new Place();
                 cut.setId(c.getInt(idIndex));
                 cut.setCount(c.getInt(priIndex));
                 cut.setName(c.getString(weiIndex));
                 cut.setUserLogin(c.getString(userLoginIndex));
-                cut.setOrder_id(c.getInt(ordIdIndex));
+                cut.setExcursion_id(c.getInt(ordIdIndex));
                 retList.add(cut);
             } while(c.moveToNext());
         }
@@ -112,13 +112,13 @@ public class CutleriesDB {
         return retList;
     }
 
-    public List<Cutlery> readAllUsers(User user){
+    public List<Place> readAllUsers(User user){
         if (!Objects.equals(user.getRole(), "admin")){
             return readAll(user);
         }
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        List<Cutlery> retList = new ArrayList<Cutlery>();
-        Cursor c = db.query("cutleries", null, null, null,
+        List<Place> retList = new ArrayList<Place>();
+        Cursor c = db.query("places", null, null, null,
                 null, null, null);
         if (c.moveToFirst()){
             int idIndex = c.getColumnIndex("id");
@@ -127,12 +127,12 @@ public class CutleriesDB {
             int userLoginIndex = c.getColumnIndex("userLogin");
             int ordIdIndex = c.getColumnIndex("order_id");
             do{
-                Cutlery lun = new Cutlery();
+                Place lun = new Place();
                 lun.setId(c.getInt(idIndex));
                 lun.setCount(c.getInt(priIndex));
                 lun.setName(c.getString(weiIndex));
                 lun.setUserLogin(c.getString(userLoginIndex));
-                lun.setOrder_id(c.getInt(ordIdIndex));
+                lun.setExcursion_id(c.getInt(ordIdIndex));
                 retList.add(lun);
             } while(c.moveToNext());
         }
@@ -145,12 +145,12 @@ public class CutleriesDB {
     class DBHelper extends SQLiteOpenHelper {
 
         public DBHelper(Context context) {
-            super(context, "kursDBCutleries", null, 1);
+            super(context, "kursDBPlaces", null, 1);
         }
 
         @Override
         public void onCreate(SQLiteDatabase db) {
-            db.execSQL("create table cutleries ("
+            db.execSQL("create table places ("
                     + "id integer primary key autoincrement,"
                     + "count integer,"
                     + "name text,"

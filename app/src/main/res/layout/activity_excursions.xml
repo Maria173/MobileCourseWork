@@ -9,13 +9,13 @@
     tools:context=".OrdersActivity">
 
     <ListView
-        android:id="@+id/ordersListView"
+        android:id="@+id/excursionsListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1" />
 
     <Button
-        android:id="@+id/ordersButtonAdd"
+        android:id="@+id/excursionsButtonAdd"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="3dp"
@@ -27,7 +27,7 @@
         android:textColor="#263238" />
 
     <Button
-        android:id="@+id/ordersButtonChange"
+        android:id="@+id/excursionsButtonChange"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="3dp"
@@ -39,7 +39,7 @@
         android:textColor="#263238" />
 
     <Button
-        android:id="@+id/ordersButtonDelete"
+        android:id="@+id/excursionsButtonDelete"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="3dp"

@@ -6,8 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.kursworkapplication.data.Lunch;
-import com.example.kursworkapplication.data.Order;
+import com.example.kursworkapplication.data.Excursion;
+import com.example.kursworkapplication.data.Trip;
 import com.example.kursworkapplication.data.User;
 
 import java.io.FileInputStream;
@@ -17,17 +17,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class LunchesDB {
+public class TripsDB {
     private DBHelper dbHelper;
 
-    public LunchesDB(Context context){
+    public TripsDB(Context context){
         dbHelper = new DBHelper(context);
     }
 
-    public Lunch get(Lunch lunch){
+    public Trip get(Trip trip){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        Cursor c = db.query("lunches", null, "id = ?",
-                new String[] {String.valueOf(lunch.getId())},
+        Cursor c = db.query("trips", null, "id = ?",
+                new String[] {String.valueOf(trip.getId())},
         null, null, null);
         if (c.moveToFirst()){
             int idIndex = c.getColumnIndex("id");
@@ -35,13 +35,13 @@ public class LunchesDB {
             int weiIndex = c.getColumnIndex("weight");
             int userLoginIndex = c.getColumnIndex("userLogin");
             int ordIdIndex = c.getColumnIndex("order_id");
-            Lunch lun = new Lunch();
+            Trip lun = new Trip();
             lun.setId(c.getInt(idIndex));
             lun.setPrice(c.getInt(priIndex));
             lun.setWeight(c.getInt(weiIndex));
             lun.setUserLogin(c.getString(userLoginIndex));
-            lun.setOrder_id(c.getInt(ordIdIndex));
-            if (lun.getUserLogin().equals(lunch.getUserLogin())){
+            lun.setExcursion_id(c.getInt(ordIdIndex));
+            if (lun.getUserLogin().equals(trip.getUserLogin())){
                 dbHelper.close();
                 return lun;
             }
@@ -50,50 +50,50 @@ public class LunchesDB {
         return null;
     }
 
-    public void add(Lunch lunch){
+    public void add(Trip trip){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put("price", lunch.getPrice());
-        cv.put("weight", lunch.getWeight());
-        cv.put("userLogin", lunch.getUserLogin());
-        cv.put("order_id", lunch.getOrder_id());
-        long lunchId = db.insert("lunches", null, cv);
+        cv.put("price", trip.getPrice());
+        cv.put("weight", trip.getWeight());
+        cv.put("userLogin", trip.getUserLogin());
+        cv.put("order_id", trip.getExcursion_id());
+        long tripId = db.insert("trips", null, cv);
         dbHelper.close();
     }
 
-    public void update(Lunch lunch){
-        if (get(lunch) == null){
+    public void update(Trip trip){
+        if (get(trip) == null){
             return;
         }
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put("price", lunch.getPrice());
-        cv.put("weight", lunch.getWeight());
-        cv.put("userLogin", lunch.getUserLogin());
-        cv.put("order_id", lunch.getOrder_id());
-        db.update("lunches", cv, "id = ?", new String[] {String.valueOf(lunch.getId())});
+        cv.put("price", trip.getPrice());
+        cv.put("weight", trip.getWeight());
+        cv.put("userLogin", trip.getUserLogin());
+        cv.put("order_id", trip.getExcursion_id());
+        db.update("trips", cv, "id = ?", new String[] {String.valueOf(trip.getId())});
         dbHelper.close();
     }
 
-    public void delete(Lunch lunch){
-        if(get(lunch) == null){
+    public void delete(Trip trip){
+        if(get(trip) == null){
             return;
         }
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        db.delete("lunches", "id = " + lunch.getId(), null);
+        db.delete("trips", "id = " + trip.getId(), null);
         dbHelper.close();
     }
 
-    public void delete(Order order){
+    public void delete(Excursion excursion){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        db.delete("lunches", "order_id = " + order.getId(), null);
+        db.delete("trips", "order_id = " + excursion.getId(), null);
         dbHelper.close();
     }
 
-    public List<Lunch> readAll(User user){
+    public List<Trip> readAll(User user){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        List<Lunch> retList = new ArrayList<Lunch>();
-        Cursor c = db.query("lunches", null, "userLogin = ?",
+        List<Trip> retList = new ArrayList<Trip>();
+        Cursor c = db.query("trips", null, "userLogin = ?",
                 new String[] {user.getLogin()}, null, null, null);
         if (c.moveToFirst()){
             int idIndex = c.getColumnIndex("id");
@@ -102,12 +102,12 @@ public class LunchesDB {
             int userLoginIndex = c.getColumnIndex("userLogin");
             int ordIdIndex = c.getColumnIndex("order_id");
             do{
-                Lunch lun = new Lunch();
+                Trip lun = new Trip();
                 lun.setId(c.getInt(idIndex));
                 lun.setPrice(c.getInt(priIndex));
                 lun.setWeight(c.getInt(weiIndex));
                 lun.setUserLogin(c.getString(userLoginIndex));
-                lun.setOrder_id(c.getInt(ordIdIndex));
+                lun.setExcursion_id(c.getInt(ordIdIndex));
                 retList.add(lun);
             } while(c.moveToNext());
         }
@@ -115,13 +115,13 @@ public class LunchesDB {
         return retList;
     }
 
-    public List<Lunch> readAllUsers(User user){
+    public List<Trip> readAllUsers(User user){
         if (!Objects.equals(user.getRole(), "admin")){
             return readAll(user);
         }
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        List<Lunch> retList = new ArrayList<Lunch>();
-        Cursor c = db.query("lunches", null, null, null,
+        List<Trip> retList = new ArrayList<Trip>();
+        Cursor c = db.query("trips", null, null, null,
                 null, null, null);
         if (c.moveToFirst()){
             int idIndex = c.getColumnIndex("id");
@@ -130,12 +130,12 @@ public class LunchesDB {
             int userLoginIndex = c.getColumnIndex("userLogin");
             int ordIdIndex = c.getColumnIndex("order_id");
             do{
-                Lunch lun = new Lunch();
+                Trip lun = new Trip();
                 lun.setId(c.getInt(idIndex));
                 lun.setPrice(c.getInt(priIndex));
                 lun.setWeight(c.getInt(weiIndex));
                 lun.setUserLogin(c.getString(userLoginIndex));
-                lun.setOrder_id(c.getInt(ordIdIndex));
+                lun.setExcursion_id(c.getInt(ordIdIndex));
                 retList.add(lun);
             } while(c.moveToNext());
         }
@@ -146,12 +146,12 @@ public class LunchesDB {
     class DBHelper extends SQLiteOpenHelper {
 
         public DBHelper(Context context) {
-            super(context, "kursDBLunches", null, 1);
+            super(context, "kursDBTrips", null, 1);
         }
 
         @Override
         public void onCreate(SQLiteDatabase db) {
-            db.execSQL("create table lunches ("
+            db.execSQL("create table trips ("
                     + "id integer primary key autoincrement,"
                     + "price integer,"
                     + "weight integer,"

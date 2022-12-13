@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.kursworkapplication.data.Order;
+import com.example.kursworkapplication.data.Excursion;
 import com.example.kursworkapplication.data.User;
 
 import java.io.FileInputStream;
@@ -16,33 +16,33 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class OrdersDB {
+public class ExcursionsDB {
     private DBHelper dbHelper;
-    private LunchesDB lunchesDB;
-    private CutleriesDB cutleriesDB;
+    private TripsDB tripsDB;
+    private PlacesDB placesDB;
 
-    public OrdersDB(Context context){
+    public ExcursionsDB(Context context){
         dbHelper = new DBHelper(context);
-        lunchesDB = new LunchesDB(context);
-        cutleriesDB = new CutleriesDB(context);
+        tripsDB = new TripsDB(context);
+        placesDB = new PlacesDB(context);
     }
 
-    public Order get(Order order){
+    public Excursion get(Excursion excursion){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        Cursor c = db.query("orders", null, "id = ?",
-                new String[] {String.valueOf(order.getId())},
+        Cursor c = db.query("excursions", null, "id = ?",
+                new String[] {String.valueOf(excursion.getId())},
                 null, null, null);
         if (c.moveToFirst()){
             int idIndex = c.getColumnIndex("id");
             int calIndex = c.getColumnIndex("calorie");
             int wishIndex = c.getColumnIndex("wishes");
             int userLoginIndex = c.getColumnIndex("userLogin");
-            Order ord = new Order();
+            Excursion ord = new Excursion();
             ord.setId(c.getInt(idIndex));
             ord.setCalorie(c.getInt(calIndex));
             ord.setWishes(c.getString(wishIndex));
             ord.setUserLogin(c.getString(userLoginIndex));
-            if (ord.getUserLogin().equals(order.getUserLogin())){
+            if (ord.getUserLogin().equals(excursion.getUserLogin())){
                 dbHelper.close();
                 return ord;
             }
@@ -51,44 +51,44 @@ public class OrdersDB {
         return null;
     }
 
-    public void add(Order order){
+    public void add(Excursion excursion){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put("calorie", order.getCalorie());
-        cv.put("wishes", order.getWishes());
-        cv.put("userLogin", order.getUserLogin());
-        long orderId = db.insert("orders", null, cv);
+        cv.put("calorie", excursion.getCalorie());
+        cv.put("wishes", excursion.getWishes());
+        cv.put("userLogin", excursion.getUserLogin());
+        long excursionId = db.insert("excursions", null, cv);
         dbHelper.close();
     }
 
-    public void update(Order order){
-        if (get(order) == null){
+    public void update(Excursion excursion){
+        if (get(excursion) == null){
             return;
         }
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put("calorie", order.getCalorie());
-        cv.put("wishes", order.getWishes());
-        cv.put("userLogin", order.getUserLogin());
-        db.update("orders", cv, "id = ?", new String[] {String.valueOf(order.getId())});
+        cv.put("calorie", excursion.getCalorie());
+        cv.put("wishes", excursion.getWishes());
+        cv.put("userLogin", excursion.getUserLogin());
+        db.update("excursions", cv, "id = ?", new String[] {String.valueOf(excursion.getId())});
         dbHelper.close();
     }
 
-    public void delete(Order order){
-        if (get(order) == null){
+    public void delete(Excursion excursion){
+        if (get(excursion) == null){
             return;
         }
-        lunchesDB.delete(order);
-        cutleriesDB.delete(order);
+        tripsDB.delete(excursion);
+        placesDB.delete(excursion);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        db.delete("orders", "id = " + order.getId(), null);
+        db.delete("excursions", "id = " + excursion.getId(), null);
         dbHelper.close();
     }
 
-    public List<Order> readAll(User user){
+    public List<Excursion> readAll(User user){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        List<Order> retList = new ArrayList<Order>();
-        Cursor c = db.query("orders", null, "userLogin = ?",
+        List<Excursion> retList = new ArrayList<Excursion>();
+        Cursor c = db.query("excursions", null, "userLogin = ?",
                 new String[] {user.getLogin()}, null, null, null);
         if (c.moveToFirst()){
             int idIndex = c.getColumnIndex("id");
@@ -96,25 +96,25 @@ public class OrdersDB {
             int wishIndex = c.getColumnIndex("wishes");
             int userLoginIndex = c.getColumnIndex("userLogin");
             do{
-                Order order = new Order();
-                order.setId(c.getInt(idIndex));
-                order.setCalorie(c.getInt(calIndex));
-                order.setWishes(c.getString(wishIndex));
-                order.setUserLogin(c.getString(userLoginIndex));
-                retList.add(order);
+                Excursion excursion = new Excursion();
+                excursion.setId(c.getInt(idIndex));
+                excursion.setCalorie(c.getInt(calIndex));
+                excursion.setWishes(c.getString(wishIndex));
+                excursion.setUserLogin(c.getString(userLoginIndex));
+                retList.add(excursion);
             } while(c.moveToNext());
         }
         dbHelper.close();
         return retList;
     }
 
-    public List<Order> readAllUsers(User user){
+    public List<Excursion> readAllUsers(User user){
         if (!Objects.equals(user.getRole(), "admin")){
             return readAll(user);
         }
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        List<Order> retList = new ArrayList<Order>();
-        Cursor c = db.query("orders", null, null, null,
+        List<Excursion> retList = new ArrayList<Excursion>();
+        Cursor c = db.query("excursions", null, null, null,
                 null, null, null);
         if (c.moveToFirst()){
             int idIndex = c.getColumnIndex("id");
@@ -122,12 +122,12 @@ public class OrdersDB {
             int wishIndex = c.getColumnIndex("wishes");
             int userLoginIndex = c.getColumnIndex("userLogin");
             do{
-                Order order = new Order();
-                order.setId(c.getInt(idIndex));
-                order.setCalorie(c.getInt(calIndex));
-                order.setWishes(c.getString(wishIndex));
-                order.setUserLogin(c.getString(userLoginIndex));
-                retList.add(order);
+                Excursion excursion = new Excursion();
+                excursion.setId(c.getInt(idIndex));
+                excursion.setCalorie(c.getInt(calIndex));
+                excursion.setWishes(c.getString(wishIndex));
+                excursion.setUserLogin(c.getString(userLoginIndex));
+                retList.add(excursion);
             } while(c.moveToNext());
         }
         dbHelper.close();
@@ -137,12 +137,12 @@ public class OrdersDB {
     class DBHelper extends SQLiteOpenHelper {
 
         public DBHelper(Context context) {
-            super(context, "kursDBOrders", null, 1);
+            super(context, "kursDBExcursions", null, 1);
         }
 
         @Override
         public void onCreate(SQLiteDatabase db) {
-            db.execSQL("create table orders ("
+            db.execSQL("create table excursions ("
                     + "id integer primary key autoincrement,"
                     + "calorie integer,"
                     + "wishes text,"

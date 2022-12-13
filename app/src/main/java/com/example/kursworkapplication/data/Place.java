@@ -1,6 +1,6 @@
 package com.example.kursworkapplication.data;
 
-public class Cutlery {
+public class Place {
     private int id;
     private int count;
     private String name;
@@ -9,7 +9,7 @@ public class Cutlery {
 
     @Override
     public String toString(){
-        return String.format("Cutlery = {Id = %d, count = %d, name = %s}",
+        return String.format("Place = {Id = %d, count = %d, name = %s}",
                 id, count, name);
     }
 
@@ -45,11 +45,11 @@ public class Cutlery {
         this.userLogin = userLogin;
     }
 
-    public int getOrder_id() {
+    public int getExcursion_id() {
         return order_id;
     }
 
-    public void setOrder_id(int order_id) {
+    public void setExcursion_id(int order_id) {
         this.order_id = order_id;
     }
 }

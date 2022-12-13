@@ -19,16 +19,16 @@
         android:requestLegacyExternalStorage="true"
         tools:targetApi="31">
         <activity
-            android:name=".reportChoseOrdersActivity"
+            android:name=".reportChoseExcursionsActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             />
         <activity
-            android:name=".reportLunchesOrdersActivity"
+            android:name=".reportTripsExcursionsActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".reportCutleriesOrdersActivity"
+            android:name=".reportPlacesExcursionsActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
@@ -36,11 +36,11 @@
             android:exported="false"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".CutleryActivity"
+            android:name=".PlaceActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".LunchActivity"
+            android:name=".TripActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
@@ -55,7 +55,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".OrderActivity"
+            android:name=".ExcursionActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
@@ -63,15 +63,15 @@
             android:exported="false"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".CutleriesActivity"
+            android:name=".PlacesActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".LunchesActivity"
+            android:name=".TripsActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".OrdersActivity"
+            android:name=".ExcursionsActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity

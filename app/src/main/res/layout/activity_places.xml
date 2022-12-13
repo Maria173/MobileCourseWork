@@ -6,15 +6,16 @@
     android:layout_height="match_parent"
     android:background="@color/teal_200"
     android:orientation="vertical"
-    tools:context=".LunchesActivity">
+    tools:context=".CutleriesActivity">
+
 
     <ListView
-        android:id="@+id/lunchesListView"
+        android:id="@+id/placesListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1" />
     <Button
-        android:id="@+id/lunchesButtonAdd"
+        android:id="@+id/placesButtonAdd"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="3dp"
@@ -26,7 +27,7 @@
         android:textColor="#263238" />
 
     <Button
-        android:id="@+id/lunchesButtonChange"
+        android:id="@+id/placesButtonChange"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="3dp"
@@ -38,7 +39,7 @@
         android:textColor="#263238" />
 
     <Button
-        android:id="@+id/lunchesButtonDelete"
+        android:id="@+id/placesButtonDelete"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="3dp"

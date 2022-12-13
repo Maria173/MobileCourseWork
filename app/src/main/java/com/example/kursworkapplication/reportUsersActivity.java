@@ -87,19 +87,19 @@ public class reportUsersActivity extends AppCompatActivity {
         h2.setPadding(20, 0, 0, 0);
         head.addView(h2);
         TextView h3 = new TextView(this);
-        h3.setText("Заказы");
+        h3.setText("Экскурсии");
         h3.setTextSize(18);
         h3.setTextColor(Color.parseColor("#D67777"));
         h3.setPadding(20, 0, 0, 0);
         head.addView(h3);
         TextView h4 = new TextView(this);
-        h4.setText("Обеды");
+        h4.setText("Путешествия");
         h4.setTextSize(18);
         h4.setTextColor(Color.parseColor("#D67777"));
         h4.setPadding(20, 0, 0, 0);
         head.addView(h4);
         TextView h5 = new TextView(this);
-        h5.setText("Приборы");
+        h5.setText("Места");
         h5.setTextSize(18);
         h5.setTextColor(Color.parseColor("#D67777"));
         h5.setPadding(20, 0, 0, 0);
@@ -130,19 +130,19 @@ public class reportUsersActivity extends AppCompatActivity {
             rol.setPadding(20, 0, 0, 0);
             row.addView(rol);
             TextView ord = new TextView(this);
-            ord.setText(Integer.toString(userUnit.getOrdersCount()));
+            ord.setText(Integer.toString(userUnit.getExcursionsCount()));
             ord.setTextSize(18);
             ord.setTextColor(Color.parseColor("#D67777"));
             ord.setPadding(20, 0, 0, 0);
             row.addView(ord);
             TextView lun = new TextView(this);
-            lun.setText(Integer.toString(userUnit.getLunchesCount()));
+            lun.setText(Integer.toString(userUnit.getTripsCount()));
             lun.setTextSize(18);
             lun.setTextColor(Color.parseColor("#D67777"));
             lun.setPadding(20, 0, 0, 0);
             row.addView(lun);
             TextView cut = new TextView(this);
-            cut.setText(Integer.toString(userUnit.getCutleriesCount()));
+            cut.setText(Integer.toString(userUnit.getPlacesCount()));
             cut.setTextSize(18);
             cut.setTextColor(Color.parseColor("#D67777"));
             cut.setPadding(20, 0, 0, 0);
@@ -188,16 +188,16 @@ public class reportUsersActivity extends AppCompatActivity {
                 PdfPTable tablePdf = new PdfPTable(5);
                 tablePdf.addCell("Login");
                 tablePdf.addCell("Role");
-                tablePdf.addCell("Orders");
-                tablePdf.addCell("Lunches");
-                tablePdf.addCell("Cutleries");
+                tablePdf.addCell("Excursions");
+                tablePdf.addCell("Trips");
+                tablePdf.addCell("Places");
 
                 for(allUsersUnit userUnit : list){
                     tablePdf.addCell(userUnit.getLogin());
                     tablePdf.addCell(userUnit.getRole());
-                    tablePdf.addCell(Integer.toString(userUnit.getOrdersCount()));
-                    tablePdf.addCell(Integer.toString(userUnit.getLunchesCount()));
-                    tablePdf.addCell(Integer.toString(userUnit.getCutleriesCount()));
+                    tablePdf.addCell(Integer.toString(userUnit.getExcursionsCount()));
+                    tablePdf.addCell(Integer.toString(userUnit.getTripsCount()));
+                    tablePdf.addCell(Integer.toString(userUnit.getPlacesCount()));
                 }
 
                 document.add(tablePdf);

@@ -1,6 +1,6 @@
 package com.example.kursworkapplication.data;
 
-public class Order {
+public class Excursion {
     private int id;
     private int calorie;
     private String wishes;
@@ -8,7 +8,7 @@ public class Order {
 
     @Override
     public String toString(){
-        return String.format("Order = {Id = %d, calorie = %d, wishes = %s}",
+        return String.format("Excursion = {Id = %d, calorie = %d, wishes = %s}",
                 id, calorie, wishes);
     }
 

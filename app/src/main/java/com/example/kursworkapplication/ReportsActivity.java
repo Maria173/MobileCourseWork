@@ -26,8 +26,8 @@ public class ReportsActivity extends AppCompatActivity {
         login = sPref.getString("login", "");
         role = sPref.getString("role", "");
 
-        Button lunches = findViewById(R.id.reportsButtonLunches);
-        Button cutleries = findViewById(R.id.reportsButtonCutleries);
+        Button trips = findViewById(R.id.reportsButtonTrips);
+        Button places = findViewById(R.id.reportsButtonPlaces);
         Button allUsers = findViewById(R.id.reportsButtonAllUsers);
 
         if (!Objects.equals(role, "admin")){
@@ -38,12 +38,12 @@ public class ReportsActivity extends AppCompatActivity {
             Intent intent = new Intent(this, reportUsersActivity.class);
             startActivity(intent);
         });
-        cutleries.setOnClickListener(v -> {
-            Intent intent = new Intent(this, reportCutleriesOrdersActivity.class);
+        places.setOnClickListener(v -> {
+            Intent intent = new Intent(this, reportPlacesExcursionsActivity.class);
             startActivity(intent);
         });
-        lunches.setOnClickListener(v -> {
-            Intent intent = new Intent(this, reportChoseOrdersActivity.class);
+        trips.setOnClickListener(v -> {
+            Intent intent = new Intent(this, reportChoseExcursionsActivity.class);
             startActivity(intent);
         });
     }

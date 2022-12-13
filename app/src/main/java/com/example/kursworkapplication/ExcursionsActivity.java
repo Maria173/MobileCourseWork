@@ -11,79 +11,84 @@ import android.util.SparseBooleanArray;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
-import com.example.kursworkapplication.data.CutleriesData;
-import com.example.kursworkapplication.data.Cutlery;
-import com.example.kursworkapplication.data.Lunch;
-import com.example.kursworkapplication.data.LunchesData;
+import com.example.kursworkapplication.data.Excursion;
+import com.example.kursworkapplication.data.ExcursionsData;
 
-public class CutleriesActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class ExcursionsActivity extends AppCompatActivity {
+
     String login = "";
-    CutleriesData cutleriesData;
-    ArrayAdapter<Cutlery> adapter;
-    ListView listViewCutleries;
+    ExcursionsData excursionsData;
+    ArrayAdapter<Excursion> adapter;
+    ListView listViewExcursions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cutleries);
+        setContentView(R.layout.activity_excursions);
 
         SharedPreferences sPref = getSharedPreferences("User", MODE_PRIVATE);
         SharedPreferences.Editor ed = sPref.edit();
         login = sPref.getString("login", "");
-        cutleriesData = new CutleriesData(this, login);
+        excursionsData = new ExcursionsData(this, login);
 
-        listViewCutleries = findViewById(R.id.cutleriesListView);
-        Button add = findViewById(R.id.cutleriesButtonAdd);
-        Button upd = findViewById(R.id.cutleriesButtonChange);
-        Button del = findViewById(R.id.cutleriesButtonDelete);
+        listViewExcursions = findViewById(R.id.excursionsListView);
+        Button add = findViewById(R.id.excursionsButtonAdd);
+        Button upd = findViewById(R.id.excursionsButtonChange);
+        Button del = findViewById(R.id.excursionsButtonDelete);
 
-        adapter = new ArrayAdapter<Cutlery>(this, R.layout.listitem,
-                cutleriesData.findAllcutleries(login));
-        listViewCutleries.setAdapter(adapter);
-        listViewCutleries.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        adapter = new ArrayAdapter<Excursion>(this, R.layout.listitem,
+                excursionsData.findAllExcursions(login));
+        listViewExcursions.setAdapter(adapter);
+        listViewExcursions.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         adapter.notifyDataSetChanged();
 
         add.setOnClickListener(v -> {
-            Intent intent = new Intent(this, CutleryActivity.class);
+            Intent intent = new Intent(this, ExcursionActivity.class);
+            //startActivity(intent);
             startActivityForResult(intent, 99);
             adapter.notifyDataSetChanged();
         });
         upd.setOnClickListener(v -> {
-            int cutlery = -1;
-            SparseBooleanArray sparseBooleanArray = listViewCutleries.getCheckedItemPositions();
-            for (int i = 0; i < listViewCutleries.getCount(); ++i){
+            int excursion = -1;
+            SparseBooleanArray sparseBooleanArray = listViewExcursions.getCheckedItemPositions();
+            for (int i = 0; i < listViewExcursions.getCount(); ++i){
                 if(sparseBooleanArray.get(i) == true){
-                    cutlery = adapter.getItem(i).getId();
+                    excursion = adapter.getItem(i).getId();
                 }
             }
-            if (cutlery == -1){
+            if (excursion == -1){
                 return;
             }
-            Intent intent = new Intent(this, CutleryActivity.class);
-            intent.putExtra("Id", cutlery);
+            Intent intent = new Intent(this, ExcursionActivity.class);
+            intent.putExtra("Id", excursion);
+            //startActivity(intent);
             startActivityForResult(intent, 99);
             adapter.notifyDataSetChanged();
-            listViewCutleries.clearChoices();
+            listViewExcursions.clearChoices();
         });
         del.setOnClickListener(v -> {
-            int cutlery = -1;
-            SparseBooleanArray sparseBooleanArray = listViewCutleries.getCheckedItemPositions();
-            for (int i = 0; i < listViewCutleries.getCount(); ++i) {
+            int excursion = -1;
+            SparseBooleanArray sparseBooleanArray = listViewExcursions.getCheckedItemPositions();
+            for (int i = 0; i < listViewExcursions.getCount(); ++i) {
                 if (sparseBooleanArray.get(i) == true) {
-                    cutlery = adapter.getItem(i).getId();
+                    excursion = adapter.getItem(i).getId();
                 }
             }
-            if (cutlery != -1) {
-                int finalCutlery = cutlery;
+            if (excursion != -1) {
+                int finalExcursion = excursion;
                 new AlertDialog.Builder(this)
                         .setTitle("Удаление")
                         .setMessage("Вы уверены что хотите удалить запись?")
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .setPositiveButton("Да", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
-                                cutleriesData.deletecutlery(finalCutlery, login);
-                                listViewCutleries.clearChoices();
+                                excursionsData.deleteExcursion(finalExcursion, login);
+                                listViewExcursions.clearChoices();
                                 adapter.notifyDataSetChanged();
                             }})
                         .setNegativeButton("Нет", null).show();
