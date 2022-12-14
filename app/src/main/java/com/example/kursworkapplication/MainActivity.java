@@ -7,6 +7,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 
+import com.example.kursworkapplication.data.Excursion;
+
 public class MainActivity extends AppCompatActivity {
 
     String login = "";
@@ -24,21 +26,21 @@ public class MainActivity extends AppCompatActivity {
         role = sPref.getString("role", "");
 
 
-        Button lunches = findViewById(R.id.mainButtonLunch);
-        Button orders = findViewById(R.id.mainButtonOrders);
-        Button cutleries = findViewById(R.id.mainButtonCutlery);
+        Button lunches = findViewById(R.id.mainButtonTrips);
+        Button orders = findViewById(R.id.mainButtonExcursions);
+        Button cutleries = findViewById(R.id.mainButtonPlaces);
         Button reports = findViewById(R.id.mainButtonReports);
 
         lunches.setOnClickListener(v -> {
-            Intent intent = new Intent(this, LunchesActivity.class);
+            Intent intent = new Intent(this, TripsActivity.class);
             startActivity(intent);
         });
         orders.setOnClickListener(v -> {
-            Intent intent = new Intent(this, OrdersActivity.class);
+            Intent intent = new Intent(this, ExcursionsActivity.class);
             startActivity(intent);
         });
         cutleries.setOnClickListener(v -> {
-            Intent intent = new Intent(this, CutleriesActivity.class);
+            Intent intent = new Intent(this, PlacesActivity.class);
             startActivity(intent);
         });
         reports.setOnClickListener(v -> {

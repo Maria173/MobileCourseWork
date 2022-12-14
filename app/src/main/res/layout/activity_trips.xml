@@ -6,16 +6,15 @@
     android:layout_height="match_parent"
     android:background="@color/teal_200"
     android:orientation="vertical"
-    tools:context=".OrdersActivity">
+    tools:context=".TripsActivity">
 
     <ListView
-        android:id="@+id/ordersListView"
+        android:id="@+id/tripsListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1" />
-
     <Button
-        android:id="@+id/ordersButtonAdd"
+        android:id="@+id/tripsButtonAdd"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="3dp"
@@ -27,7 +26,7 @@
         android:textColor="#263238" />
 
     <Button
-        android:id="@+id/ordersButtonChange"
+        android:id="@+id/tripsButtonChange"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="3dp"
@@ -39,7 +38,7 @@
         android:textColor="#263238" />
 
     <Button
-        android:id="@+id/ordersButtonDelete"
+        android:id="@+id/tripsButtonDelete"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="3dp"

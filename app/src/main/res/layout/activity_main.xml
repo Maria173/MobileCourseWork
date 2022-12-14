@@ -17,7 +17,7 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Столовая &quot;Рога и копыта&quot;"
+        android:text="Туристическое агенство &quot;Иван Сусанин&quot;"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="#D67777"
@@ -31,36 +31,36 @@
         app:srcCompat="@drawable/pig" />
 
     <Button
-        android:id="@+id/mainButtonOrders"
+        android:id="@+id/mainButtonTrips"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:layout_marginBottom="3dp"
         android:background="@color/purple_500"
         android:minHeight="48dp"
-        android:text="Заказы"
+        android:text="Путешествия"
         android:textColor="#263238" />
 
     <Button
-        android:id="@+id/mainButtonLunch"
+        android:id="@+id/mainButtonExcursions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:layout_marginBottom="3dp"
         android:background="@color/purple_500"
         android:minHeight="48dp"
-        android:text="Обеды"
+        android:text="Экскурсии"
         android:textColor="#263238" />
 
     <Button
-        android:id="@+id/mainButtonCutlery"
+        android:id="@+id/mainButtonPlaces"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:layout_marginBottom="3dp"
         android:background="@color/purple_500"
         android:minHeight="48dp"
-        android:text="Столовые приборы"
+        android:text="Посещенные места"
         android:textColor="#263238" />
 
     <Button

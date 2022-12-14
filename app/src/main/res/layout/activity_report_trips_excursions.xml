@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/teal_200"
     android:orientation="vertical"
-    tools:context=".reportLunchesOrdersActivity">
+    tools:context=".reportTripsExcursionsActivity">
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -15,7 +15,7 @@
         android:layout_weight="1">
 
         <TableLayout
-            android:id="@+id/reportLunchesOrdersTable"
+            android:id="@+id/reportTripsExcursionsTable"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1">
@@ -42,7 +42,7 @@
 
 
     <Button
-        android:id="@+id/reportLunchesOrdersToPdf"
+        android:id="@+id/reportTripsExcursionsToPdf"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="8"

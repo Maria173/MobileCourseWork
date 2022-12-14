@@ -11,84 +11,79 @@ import android.util.SparseBooleanArray;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.example.kursworkapplication.data.Order;
-import com.example.kursworkapplication.data.OrdersData;
+import com.example.kursworkapplication.data.PlacesData;
+import com.example.kursworkapplication.data.Place;
+import com.example.kursworkapplication.data.Trip;
+import com.example.kursworkapplication.data.TripsData;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class OrdersActivity extends AppCompatActivity {
-
+public class PlacesActivity extends AppCompatActivity {
     String login = "";
-    OrdersData ordersData;
-    ArrayAdapter<Order> adapter;
-    ListView listViewOrders;
+    PlacesData placesData;
+    ArrayAdapter<Place> adapter;
+    ListView listViewPlaces;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_orders);
+        setContentView(R.layout.activity_places);
 
         SharedPreferences sPref = getSharedPreferences("User", MODE_PRIVATE);
         SharedPreferences.Editor ed = sPref.edit();
         login = sPref.getString("login", "");
-        ordersData = new OrdersData(this, login);
+        placesData = new PlacesData(this, login);
 
-        listViewOrders = findViewById(R.id.ordersListView);
-        Button add = findViewById(R.id.ordersButtonAdd);
-        Button upd = findViewById(R.id.ordersButtonChange);
-        Button del = findViewById(R.id.ordersButtonDelete);
+        listViewPlaces = findViewById(R.id.placesListView);
+        Button add = findViewById(R.id.placesButtonAdd);
+        Button upd = findViewById(R.id.placesButtonChange);
+        Button del = findViewById(R.id.placesButtonDelete);
 
-        adapter = new ArrayAdapter<Order>(this, R.layout.listitem,
-                ordersData.findAllOrders(login));
-        listViewOrders.setAdapter(adapter);
-        listViewOrders.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        adapter = new ArrayAdapter<Place>(this, R.layout.listitem,
+                placesData.findAllplaces(login));
+        listViewPlaces.setAdapter(adapter);
+        listViewPlaces.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         adapter.notifyDataSetChanged();
 
         add.setOnClickListener(v -> {
-            Intent intent = new Intent(this, OrderActivity.class);
-            //startActivity(intent);
+            Intent intent = new Intent(this, PlaceActivity.class);
             startActivityForResult(intent, 99);
             adapter.notifyDataSetChanged();
         });
         upd.setOnClickListener(v -> {
-            int order = -1;
-            SparseBooleanArray sparseBooleanArray = listViewOrders.getCheckedItemPositions();
-            for (int i = 0; i < listViewOrders.getCount(); ++i){
+            int place = -1;
+            SparseBooleanArray sparseBooleanArray = listViewPlaces.getCheckedItemPositions();
+            for (int i = 0; i < listViewPlaces.getCount(); ++i){
                 if(sparseBooleanArray.get(i) == true){
-                    order = adapter.getItem(i).getId();
+                    place = adapter.getItem(i).getId();
                 }
             }
-            if (order == -1){
+            if (place == -1){
                 return;
             }
-            Intent intent = new Intent(this, OrderActivity.class);
-            intent.putExtra("Id", order);
-            //startActivity(intent);
+            Intent intent = new Intent(this, PlaceActivity.class);
+            intent.putExtra("Id", place);
             startActivityForResult(intent, 99);
             adapter.notifyDataSetChanged();
-            listViewOrders.clearChoices();
+            listViewPlaces.clearChoices();
         });
         del.setOnClickListener(v -> {
-            int order = -1;
-            SparseBooleanArray sparseBooleanArray = listViewOrders.getCheckedItemPositions();
-            for (int i = 0; i < listViewOrders.getCount(); ++i) {
+            int place = -1;
+            SparseBooleanArray sparseBooleanArray = listViewPlaces.getCheckedItemPositions();
+            for (int i = 0; i < listViewPlaces.getCount(); ++i) {
                 if (sparseBooleanArray.get(i) == true) {
-                    order = adapter.getItem(i).getId();
+                    place = adapter.getItem(i).getId();
                 }
             }
-            if (order != -1) {
-                int finalOrder = order;
+            if (place != -1) {
+                int finalPlace = place;
                 new AlertDialog.Builder(this)
                         .setTitle("Удаление")
                         .setMessage("Вы уверены что хотите удалить запись?")
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .setPositiveButton("Да", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
-                                ordersData.deleteOrder(finalOrder, login);
-                                listViewOrders.clearChoices();
+                                placesData.deleteplace(finalPlace, login);
+                                listViewPlaces.clearChoices();
                                 adapter.notifyDataSetChanged();
                             }})
                         .setNegativeButton("Нет", null).show();

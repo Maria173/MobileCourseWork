@@ -1,15 +1,15 @@
 package com.example.kursworkapplication.data;
 
-public class Order {
+public class Excursion {
     private int id;
-    private int calorie;
-    private String wishes;
+    private String name;
+    private String type;
     private String userLogin;
 
     @Override
     public String toString(){
-        return String.format("Order = {Id = %d, calorie = %d, wishes = %s}",
-                id, calorie, wishes);
+        return String.format("Excursion = {Id = %d, name = %s, type = %s}",
+                id, name, type);
     }
 
     public int getId() {
@@ -20,20 +20,20 @@ public class Order {
         this.id = id;
     }
 
-    public int getCalorie() {
-        return calorie;
+    public String getName() {
+        return name;
     }
 
-    public void setCalorie(int calorie) {
-        this.calorie = calorie;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getWishes() {
-        return wishes;
+    public String getType() {
+        return type;
     }
 
-    public void setWishes(String wishes) {
-        this.wishes = wishes;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getUserLogin() {

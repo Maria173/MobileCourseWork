@@ -12,76 +12,77 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.example.kursworkapplication.data.Lunch;
-import com.example.kursworkapplication.data.LunchesData;
+import com.example.kursworkapplication.data.Trip;
+import com.example.kursworkapplication.data.TripsData;
 
-public class LunchesActivity extends AppCompatActivity {
+public class TripsActivity extends AppCompatActivity {
+
     String login = "";
-    LunchesData lunchesData;
-    ArrayAdapter<Lunch> adapter;
-    ListView listViewLunches;
+    TripsData tripsData;
+    ArrayAdapter<Trip> adapter;
+    ListView listViewTrips;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lunches);
+        setContentView(R.layout.activity_trips);
 
         SharedPreferences sPref = getSharedPreferences("User", MODE_PRIVATE);
         SharedPreferences.Editor ed = sPref.edit();
         login = sPref.getString("login", "");
-        lunchesData = new LunchesData(this, login);
+        tripsData = new TripsData(this, login);
 
-        listViewLunches = findViewById(R.id.lunchesListView);
-        Button add = findViewById(R.id.lunchesButtonAdd);
-        Button upd = findViewById(R.id.lunchesButtonChange);
-        Button del = findViewById(R.id.lunchesButtonDelete);
+        listViewTrips = findViewById(R.id.tripsListView);
+        Button add = findViewById(R.id.tripsButtonAdd);
+        Button upd = findViewById(R.id.tripsButtonChange);
+        Button del = findViewById(R.id.tripsButtonDelete);
 
-        adapter = new ArrayAdapter<Lunch>(this, R.layout.listitem,
-                lunchesData.findAllLunches(login));
-        listViewLunches.setAdapter(adapter);
-        listViewLunches.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        adapter = new ArrayAdapter<Trip>(this, R.layout.listitem,
+                tripsData.findAllTrips(login));
+        listViewTrips.setAdapter(adapter);
+        listViewTrips.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         adapter.notifyDataSetChanged();
 
         add.setOnClickListener(v -> {
-            Intent intent = new Intent(this, LunchActivity.class);
+            Intent intent = new Intent(this, TripActivity.class);
             startActivityForResult(intent, 99);
             adapter.notifyDataSetChanged();
         });
         upd.setOnClickListener(v -> {
-            int lunch = -1;
-            SparseBooleanArray sparseBooleanArray = listViewLunches.getCheckedItemPositions();
-            for (int i = 0; i < listViewLunches.getCount(); ++i){
+            int trip = -1;
+            SparseBooleanArray sparseBooleanArray = listViewTrips.getCheckedItemPositions();
+            for (int i = 0; i < listViewTrips.getCount(); ++i){
                 if(sparseBooleanArray.get(i) == true){
-                    lunch = adapter.getItem(i).getId();
+                    trip = adapter.getItem(i).getId();
                 }
             }
-            if (lunch == -1){
+            if (trip == -1){
                 return;
             }
-            Intent intent = new Intent(this, LunchActivity.class);
-            intent.putExtra("Id", lunch);
+            Intent intent = new Intent(this, TripActivity.class);
+            intent.putExtra("Id", trip);
             startActivityForResult(intent, 99);
             adapter.notifyDataSetChanged();
-            listViewLunches.clearChoices();
+            listViewTrips.clearChoices();
         });
         del.setOnClickListener(v -> {
-            int lunch = -1;
-            SparseBooleanArray sparseBooleanArray = listViewLunches.getCheckedItemPositions();
-            for (int i = 0; i < listViewLunches.getCount(); ++i) {
+            int trip = -1;
+            SparseBooleanArray sparseBooleanArray = listViewTrips.getCheckedItemPositions();
+            for (int i = 0; i < listViewTrips.getCount(); ++i) {
                 if (sparseBooleanArray.get(i) == true) {
-                    lunch = adapter.getItem(i).getId();
+                    trip = adapter.getItem(i).getId();
                 }
             }
-            if (lunch != -1) {
-                int finalLunch = lunch;
+            if (trip != -1) {
+                int finalTrip = trip;
                 new AlertDialog.Builder(this)
                         .setTitle("Удаление")
                         .setMessage("Вы уверены что хотите удалить запись?")
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .setPositiveButton("Да", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
-                                lunchesData.deleteLunch(finalLunch, login);
-                                listViewLunches.clearChoices();
+                                tripsData.deleteTrip(finalTrip, login);
+                                listViewTrips.clearChoices();
                                 adapter.notifyDataSetChanged();
                             }})
                         .setNegativeButton("Нет", null).show();

@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.kursworkapplication.data.Order;
+import com.example.kursworkapplication.data.Excursion;
 import com.example.kursworkapplication.data.User;
 
 import java.io.FileInputStream;

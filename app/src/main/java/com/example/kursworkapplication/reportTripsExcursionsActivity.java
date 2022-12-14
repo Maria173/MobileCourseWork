@@ -4,6 +4,7 @@ import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -28,9 +29,11 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.kursworkapplication.data.ExcursionsData;
 import com.example.kursworkapplication.data.Reports.ReportsLogic;
 import com.example.kursworkapplication.data.Reports.allUsersUnit;
-import com.example.kursworkapplication.data.Reports.cutleriesOrders;
+import com.example.kursworkapplication.data.Reports.placesExcursions;
+import com.example.kursworkapplication.data.Reports.tripsExcursions;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -38,9 +41,11 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class reportCutleriesOrdersActivity extends AppCompatActivity {
+public class reportTripsExcursionsActivity extends AppCompatActivity {
 
     ReportsLogic reportsLogic;
     String login = "";
@@ -49,10 +54,11 @@ public class reportCutleriesOrdersActivity extends AppCompatActivity {
     private static final int PERMISSION_REQUEST_CODE = 200;
     private static final int PERMISSION_STORAGE = 101;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_report_cutleries_orders);
+        setContentView(R.layout.activity_report_trips_excursions);
 
         SharedPreferences sPref = getSharedPreferences("User", MODE_PRIVATE);
         SharedPreferences.Editor ed = sPref.edit();
@@ -61,21 +67,25 @@ public class reportCutleriesOrdersActivity extends AppCompatActivity {
 
         reportsLogic = new ReportsLogic(this, login);
 
-        List<cutleriesOrders> list = reportsLogic.getCutleriesByOrders(login);
+        Intent intent = getIntent();
+        int[] excursions = intent.getIntArrayExtra("excursions");
 
-        TableLayout table = findViewById(R.id.reportCutleriesOrdersTable);
+        List<tripsExcursions> list = reportsLogic.getTripsByExcursions(login,
+                Arrays.stream(excursions).boxed().collect(Collectors.toList()));
+
+        TableLayout table = findViewById(R.id.reportTripsExcursionsTable);
         TableRow head = new TableRow(this);
         head.setLayoutParams(new TableRow.LayoutParams(
                 TableRow.LayoutParams.MATCH_PARENT,
                 TableRow.LayoutParams.WRAP_CONTENT));
         TextView h1 = new TextView(this);
-        h1.setText("Заказ");
+        h1.setText("Экскурсия");
         h1.setTextSize(18);
         h1.setTextColor(Color.parseColor("#D67777"));
         h1.setPadding(10, 5, 0, 0);
         head.addView(h1);
         TextView h2 = new TextView(this);
-        h2.setText("Приборы");
+        h2.setText("Путешествие");
         h2.setTextSize(18);
         h2.setTextColor(Color.parseColor("#D67777"));
         h2.setPadding(20, 5, 0, 0);
@@ -90,19 +100,19 @@ public class reportCutleriesOrdersActivity extends AppCompatActivity {
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 
-        for(cutleriesOrders cut : list){
+        for(tripsExcursions lun : list){
             TableRow row = new TableRow(this);
             row.setLayoutParams(new TableRow.LayoutParams(
                     TableRow.LayoutParams.MATCH_PARENT,
                     TableRow.LayoutParams.WRAP_CONTENT));
             TextView log = new TextView(this);
-            log.setText(cut.getOrder());
+            log.setText(lun.getExcursion());
             log.setTextSize(18);
             log.setTextColor(Color.parseColor("#D67777"));
             log.setMaxWidth(displayMetrics.widthPixels / 2);
             row.addView(log);
             TextView rol = new TextView(this);
-            rol.setText(cut.getCutlery());
+            rol.setText(lun.getTrip());
             rol.setTextSize(18);
             rol.setTextColor(Color.parseColor("#D67777"));
             rol.setMaxWidth(displayMetrics.widthPixels / 2);
@@ -120,7 +130,7 @@ public class reportCutleriesOrdersActivity extends AppCompatActivity {
             table.addView(vline1);
         }
 
-        Button save = findViewById(R.id.reportCutleriesOrdersToPdf);
+        Button save = findViewById(R.id.reportTripsExcursionsToPdf);
         save.setOnClickListener(v -> {
             try {
                 if (!checkPermission()) {
@@ -129,7 +139,7 @@ public class reportCutleriesOrdersActivity extends AppCompatActivity {
                 if (!reportUsersActivity.PermissionUtils.hasPermissions(this)) {
                     reportUsersActivity.PermissionUtils.requestPermissions(this, PERMISSION_STORAGE);
                 }
-                String filename="cutleriesByOrders.pdf";
+                String filename="tripsByExcursions.pdf";
                 Document document=new Document();
                 File root = new File(Environment.getExternalStorageDirectory(), "Reports");
                 if (!root.exists()) {
@@ -139,7 +149,7 @@ public class reportCutleriesOrdersActivity extends AppCompatActivity {
                 PdfWriter.getInstance(document,new FileOutputStream(gpxfile));
                 document.open();
                 Paragraph p3=new Paragraph();
-                p3.add("Cutleries by orders");
+                p3.add("Trips by excursions");
                 document.add(p3);
                 Paragraph p4=new Paragraph();
                 p4.add(" ");
@@ -150,12 +160,12 @@ public class reportCutleriesOrdersActivity extends AppCompatActivity {
 
 
                 PdfPTable tablePdf = new PdfPTable(2);
-                tablePdf.addCell("Order");
-                tablePdf.addCell("Cutlery");
+                tablePdf.addCell("Excursion");
+                tablePdf.addCell("Trip");
 
-                for(cutleriesOrders userUnit : list){
-                    tablePdf.addCell(userUnit.getOrder());
-                    tablePdf.addCell(userUnit.getCutlery());
+                for(tripsExcursions userUnit : list){
+                    tablePdf.addCell(userUnit.getExcursion());
+                    tablePdf.addCell(userUnit.getTrip());
                 }
 
                 document.add(tablePdf);

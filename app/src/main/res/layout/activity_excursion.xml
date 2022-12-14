@@ -6,54 +6,46 @@
     android:layout_height="match_parent"
     android:background="@color/teal_200"
     android:orientation="vertical"
-    tools:context=".CutleryActivity">
-
-    <Spinner
-        android:id="@+id/cutlerySpinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="52dp" />
+    tools:context=".ExcursionActivity">
 
     <TextView
-        android:id="@+id/textView8"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Количество"
-        android:textColor="#D67777"
-        android:textSize="18sp" />
-
-    <EditText
-        android:id="@+id/cutleryEditTextCount"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""
-        android:minHeight="48dp"
-        android:textColor="#D67777"
-        android:textSize="24sp"/>
-
-    <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Название"
         android:textColor="#D67777"
-        android:textSize="18sp"/>
+        android:textSize="18sp" />
 
     <EditText
-        android:id="@+id/cutleryEditTextName"
+        android:id="@+id/excursionEditTextName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text=""
         android:minHeight="48dp"
         android:textColor="#D67777"
-        android:textSize="24sp"/>
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Тип"
+        android:textColor="#D67777"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/excursionEditTextType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="70dp"
+        android:textColor="#D67777"
+        android:textSize="24sp" />
 
     <Button
-        android:id="@+id/cutleryButtonSave"
+        android:id="@+id/excursionButtonSave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
@@ -62,5 +54,4 @@
         android:minHeight="48dp"
         android:text="Сохранить"
         android:textColor="#263238" />
-
 </LinearLayout>
