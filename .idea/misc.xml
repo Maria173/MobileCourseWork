@@ -3,6 +3,36 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Course3/mobile/MobileCourseWork/app/src/main/res/layout/activity_autorization.xml" value="0.24010416666666667" />
+        <entry key="..\:/Course3/mobile/MobileCourseWork/app/src/main/res/layout/activity_autorization_operator.xml" value="0.24010416666666667" />
+        <entry key="..\:/Course3/mobile/MobileCourseWork/app/src/main/res/layout/activity_cutleries.xml" value="0.25416666666666665" />
+        <entry key="..\:/Course3/mobile/MobileCourseWork/app/src/main/res/layout/activity_cutlery.xml" value="0.25416666666666665" />
+        <entry key="..\:/Course3/mobile/MobileCourseWork/app/src/main/res/layout/activity_guide.xml" value="0.25416666666666665" />
+        <entry key="..\:/Course3/mobile/MobileCourseWork/app/src/main/res/layout/activity_guides.xml" value="0.25416666666666665" />
+        <entry key="..\:/Course3/mobile/MobileCourseWork/app/src/main/res/layout/activity_lunch.xml" value="0.25416666666666665" />
+        <entry key="..\:/Course3/mobile/MobileCourseWork/app/src/main/res/layout/activity_lunches.xml" value="0.24010416666666667" />
+        <entry key="..\:/Course3/mobile/MobileCourseWork/app/src/main/res/layout/activity_main.xml" value="0.24010416666666667" />
+        <entry key="..\:/Course3/mobile/MobileCourseWork/app/src/main/res/layout/activity_main_operator.xml" value="0.24010416666666667" />
+        <entry key="..\:/Course3/mobile/MobileCourseWork/app/src/main/res/layout/activity_order.xml" value="0.25416666666666665" />
+        <entry key="..\:/Course3/mobile/MobileCourseWork/app/src/main/res/layout/activity_orders.xml" value="0.25416666666666665" />
+        <entry key="..\:/Course3/mobile/MobileCourseWork/app/src/main/res/layout/activity_registration_operator.xml" value="0.25416666666666665" />
+        <entry key="..\:/Course3/mobile/MobileCourseWork/app/src/main/res/layout/activity_report_chose_guides.xml" value="0.25416666666666665" />
+        <entry key="..\:/Course3/mobile/MobileCourseWork/app/src/main/res/layout/activity_report_chose_orders.xml" value="0.25416666666666665" />
+        <entry key="..\:/Course3/mobile/MobileCourseWork/app/src/main/res/layout/activity_report_cutleries_orders.xml" value="0.25416666666666665" />
+        <entry key="..\:/Course3/mobile/MobileCourseWork/app/src/main/res/layout/activity_report_lunches_orders.xml" value="0.25416666666666665" />
+        <entry key="..\:/Course3/mobile/MobileCourseWork/app/src/main/res/layout/activity_report_operators.xml" value="0.25416666666666665" />
+        <entry key="..\:/Course3/mobile/MobileCourseWork/app/src/main/res/layout/activity_report_stops_guides.xml" value="0.25416666666666665" />
+        <entry key="..\:/Course3/mobile/MobileCourseWork/app/src/main/res/layout/activity_report_tours_guides.xml" value="0.25416666666666665" />
+        <entry key="..\:/Course3/mobile/MobileCourseWork/app/src/main/res/layout/activity_report_users.xml" value="0.25416666666666665" />
+        <entry key="..\:/Course3/mobile/MobileCourseWork/app/src/main/res/layout/activity_reports.xml" value="0.25416666666666665" />
+        <entry key="..\:/Course3/mobile/MobileCourseWork/app/src/main/res/layout/activity_reports_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Course3/mobile/MobileCourseWork/app/src/main/res/layout/activity_reports_operator.xml" value="0.25416666666666665" />
+        <entry key="..\:/Course3/mobile/MobileCourseWork/app/src/main/res/layout/activity_splash_screen.xml" value="0.2" />
+        <entry key="..\:/Course3/mobile/MobileCourseWork/app/src/main/res/layout/activity_start.xml" value="0.25416666666666665" />
+        <entry key="..\:/Course3/mobile/MobileCourseWork/app/src/main/res/layout/activity_stop.xml" value="0.25416666666666665" />
+        <entry key="..\:/Course3/mobile/MobileCourseWork/app/src/main/res/layout/activity_stops.xml" value="0.25416666666666665" />
+        <entry key="..\:/Course3/mobile/MobileCourseWork/app/src/main/res/layout/activity_tour.xml" value="0.25416666666666665" />
+        <entry key="..\:/Course3/mobile/MobileCourseWork/app/src/main/res/layout/activity_tours.xml" value="0.24010416666666667" />
         <entry key="..\:/Egor/study/Mobile/KursWorkApplication/app/src/main/res/layout/activity_autorization.xml" value="0.36666666666666664" />
         <entry key="..\:/Egor/study/Mobile/KursWorkApplication/app/src/main/res/layout/activity_cutleries.xml" value="0.36666666666666664" />
         <entry key="..\:/Egor/study/Mobile/KursWorkApplication/app/src/main/res/layout/activity_cutlery.xml" value="0.23802083333333332" />
