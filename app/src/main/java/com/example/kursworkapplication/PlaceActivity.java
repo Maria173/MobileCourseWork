@@ -66,8 +66,7 @@ public class PlaceActivity extends AppCompatActivity {
         }
 
         save.setOnClickListener(v -> {
-            if (count.getText().toString().equals("") ||
-                    !android.text.TextUtils.isDigitsOnly(count.getText().toString())){
+            if (count.getText().toString().equals("")){
                 Toast.makeText(this, "Количество должно быть не пустым числом",
                         Toast.LENGTH_LONG).show();
                 return;

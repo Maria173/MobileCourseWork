@@ -59,9 +59,9 @@ public class TripsData {
     private void readAll(String userLogin){
         User usr = new User();
         usr.setLogin(userLogin);
-        List<Trip> trips = tripsDB.readAll(usr);
+        List<Trip> trps = tripsDB.readAll(usr);
         trips.clear();
-        for(Trip trip : trips){
+        for(Trip trip : trps){
             trips.add(trip);
         }
     }

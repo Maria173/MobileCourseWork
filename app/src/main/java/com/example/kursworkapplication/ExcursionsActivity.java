@@ -52,6 +52,7 @@ public class ExcursionsActivity extends AppCompatActivity {
             //startActivity(intent);
             startActivityForResult(intent, 99);
             adapter.notifyDataSetChanged();
+            System.out.println("Changed");
         });
         upd.setOnClickListener(v -> {
             int excursion = -1;

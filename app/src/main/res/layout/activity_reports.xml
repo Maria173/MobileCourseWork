@@ -16,7 +16,7 @@
         android:layout_marginBottom="3dp"
         android:background="@color/purple_500"
         android:minHeight="48dp"
-        android:text="Приборы по заказам"
+        android:text="Посещенные места по экскурсиям"
         android:textColor="#263238" />
 
     <Button
@@ -27,7 +27,7 @@
         android:layout_marginBottom="3dp"
         android:background="@color/purple_500"
         android:minHeight="48dp"
-        android:text="Обеды по выбранным заказам"
+        android:text="Путешествия по выбранным экскурсиям"
         android:textColor="#263238" />
 
     <Button

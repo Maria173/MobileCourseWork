@@ -146,7 +146,7 @@ public class TripsDB {
     class DBHelper extends SQLiteOpenHelper {
 
         public DBHelper(Context context) {
-            super(context, "kursDBTrips", null, 1);
+            super(context, "kursDBTrips", null, 2);
         }
 
         @Override

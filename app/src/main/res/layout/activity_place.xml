@@ -15,34 +15,34 @@
         android:minHeight="52dp" />
 
     <TextView
-        android:id="@+id/textView8"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Количество"
-        android:textColor="#D67777"
-        android:textSize="18sp" />
-
-    <EditText
-        android:id="@+id/placeEditTextCount"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""
-        android:minHeight="48dp"
-        android:textColor="#D67777"
-        android:textSize="24sp"/>
-
-    <TextView
         android:id="@+id/textView9"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Название"
         android:textColor="#D67777"
-        android:textSize="18sp"/>
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/placeEditTextName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:text=""
+        android:textColor="#D67777"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Количество посещения"
+        android:textColor="#D67777"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/placeEditTextCount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"

@@ -24,7 +24,6 @@ public class TripActivity extends AppCompatActivity {
     TripsData tripsData;
     ExcursionsData excursionsData;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,18 +43,18 @@ public class TripActivity extends AppCompatActivity {
         TextView days = findViewById(R.id.tripEditTextDays);
         Spinner spinner = findViewById(R.id.tripSpinner);
 
-        ArrayAdapter<Excursion> adapter = new ArrayAdapter(this,
+        ArrayAdapter<Excursion> adapter1 = new ArrayAdapter(this,
                 android.R.layout.simple_spinner_item, excursionsData.findAllExcursions(login));
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter1);
 
         if (id != -1){
             Trip trip = tripsData.getTrip(id, login);
             if (trip != null){
                 name.setText(trip.getName());
                 days.setText(String.valueOf(trip.getDays()));
-                for (int i = 0; i < adapter.getCount(); ++i){
-                    if(adapter.getItem(i).getId() == trip.getExcursion_id()){
+                for (int i = 0; i < adapter1.getCount(); ++i){
+                    if(adapter1.getItem(i).getId() == trip.getExcursion_id()){
                         spinner.setSelection(i);
                         break;
                     }
@@ -64,14 +63,12 @@ public class TripActivity extends AppCompatActivity {
         }
 
         save.setOnClickListener(v -> {
-            if (name.getText().toString().equals("") ||
-                    !android.text.TextUtils.isDigitsOnly(name.getText().toString())){
+            if (name.getText().toString().equals("")){
                 Toast.makeText(this, "название должно быть не пустой строкой",
                         Toast.LENGTH_LONG).show();
                 return;
             }
-            if (days.getText().toString().equals("") ||
-                    !android.text.TextUtils.isDigitsOnly(days.getText().toString())){
+            if (days.getText().toString().equals("")){
                 Toast.makeText(this, "количество дней должно быть не пустым числом",
                         Toast.LENGTH_LONG).show();
                 return;
@@ -80,11 +77,11 @@ public class TripActivity extends AppCompatActivity {
             int we = Integer.parseInt(days.getText().toString());
             if (id != -1){
                 tripsData.updateTrip(id, pr, we, login,
-                        adapter.getItem((int) spinner.getSelectedItemId()).getId());
+                        adapter1.getItem((int) spinner.getSelectedItemId()).getId());
             }
             else {
                 tripsData.addTrip(pr, we, login,
-                        adapter.getItem((int) spinner.getSelectedItemId()).getId());
+                        adapter1.getItem((int) spinner.getSelectedItemId()).getId());
             }
             //finish();
             Intent data = new Intent();

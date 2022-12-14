@@ -58,13 +58,13 @@ public class PlacesData {
     private void readAll(String userLogin){
         User usr = new User();
         usr.setLogin(userLogin);
-        List<Place> places = placesDB.readAll(usr);
+        List<Place> placs = placesDB.readAll(usr);
         places.clear();
-        for(Place place : places){
+        for(Place place : placs){
             places.add(place);
         }
         usr.setRole("admin");
-        places = placesDB.readAllUsers(usr);
+        placs = placesDB.readAllUsers(usr);
     }
     public List<Place> readAllPlaces(String userLogin){
         User usr = new User();

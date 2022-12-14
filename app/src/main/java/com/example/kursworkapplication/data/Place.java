@@ -5,12 +5,12 @@ public class Place {
     private int count;
     private String name;
     private String userLogin;
-    private int order_id;
+    private int excursion_id;
 
     @Override
     public String toString(){
-        return String.format("Place = {Id = %d, count = %d, name = %s}",
-                id, count, name);
+        return String.format("Place = {Id = %d, name = %s, count = %d}",
+                id, name, count);
     }
 
     public int getId() {
@@ -46,10 +46,10 @@ public class Place {
     }
 
     public int getExcursion_id() {
-        return order_id;
+        return excursion_id;
     }
 
-    public void setExcursion_id(int order_id) {
-        this.order_id = order_id;
+    public void setExcursion_id(int excursion_id) {
+        this.excursion_id = excursion_id;
     }
 }

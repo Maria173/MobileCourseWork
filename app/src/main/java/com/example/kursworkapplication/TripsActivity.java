@@ -16,6 +16,7 @@ import com.example.kursworkapplication.data.Trip;
 import com.example.kursworkapplication.data.TripsData;
 
 public class TripsActivity extends AppCompatActivity {
+
     String login = "";
     TripsData tripsData;
     ArrayAdapter<Trip> adapter;

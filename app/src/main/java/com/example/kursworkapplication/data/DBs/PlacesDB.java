@@ -31,7 +31,7 @@ public class PlacesDB {
             int priIndex = c.getColumnIndex("count");
             int weiIndex = c.getColumnIndex("name");
             int userLoginIndex = c.getColumnIndex("userLogin");
-            int ordIdIndex = c.getColumnIndex("order_id");
+            int ordIdIndex = c.getColumnIndex("excursion_id");
             Place cut = new Place();
             cut.setId(c.getInt(idIndex));
             cut.setCount(c.getInt(priIndex));
@@ -53,7 +53,7 @@ public class PlacesDB {
         cv.put("count", place.getCount());
         cv.put("name", place.getName());
         cv.put("userLogin", place.getUserLogin());
-        cv.put("order_id", place.getExcursion_id());
+        cv.put("excursion_id", place.getExcursion_id());
         long placeId = db.insert("places", null, cv);
         dbHelper.close();
     }
@@ -67,7 +67,7 @@ public class PlacesDB {
         cv.put("count", place.getCount());
         cv.put("name", place.getName());
         cv.put("userLogin", place.getUserLogin());
-        cv.put("order_id", place.getExcursion_id());
+        cv.put("excursion_id", place.getExcursion_id());
         db.update("places", cv, "id = ?", new String[] {String.valueOf(place.getId())});
         dbHelper.close();
     }
@@ -83,7 +83,7 @@ public class PlacesDB {
 
     public void delete(Excursion excursion){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        db.delete("places", "order_id = " + excursion.getId(), null);
+        db.delete("places", "excursion_id = " + excursion.getId(), null);
         dbHelper.close();
     }
 
@@ -97,7 +97,7 @@ public class PlacesDB {
             int priIndex = c.getColumnIndex("count");
             int weiIndex = c.getColumnIndex("name");
             int userLoginIndex = c.getColumnIndex("userLogin");
-            int ordIdIndex = c.getColumnIndex("order_id");
+            int ordIdIndex = c.getColumnIndex("excursion_id");
             do{
                 Place cut = new Place();
                 cut.setId(c.getInt(idIndex));
@@ -125,7 +125,7 @@ public class PlacesDB {
             int priIndex = c.getColumnIndex("count");
             int weiIndex = c.getColumnIndex("name");
             int userLoginIndex = c.getColumnIndex("userLogin");
-            int ordIdIndex = c.getColumnIndex("order_id");
+            int ordIdIndex = c.getColumnIndex("excursion_id");
             do{
                 Place lun = new Place();
                 lun.setId(c.getInt(idIndex));
@@ -145,7 +145,7 @@ public class PlacesDB {
     class DBHelper extends SQLiteOpenHelper {
 
         public DBHelper(Context context) {
-            super(context, "kursDBPlaces", null, 1);
+            super(context, "kursDBPlaces", null, 2);
         }
 
         @Override
@@ -155,7 +155,7 @@ public class PlacesDB {
                     + "count integer,"
                     + "name text,"
                     + "userLogin text,"
-                    + "order_id integer" + ");");
+                    + "excursion_id integer" + ");");
         }
 
         @Override
