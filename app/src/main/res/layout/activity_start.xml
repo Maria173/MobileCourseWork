@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLinerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".StartActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:minHeight="410dp"
+        app:srcCompat="@drawable/airplane" />
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Выберите свою должность"
+        android:textColor="#9944cc"
+        android:textSize="18sp" />
+    <Button
+        android:id="@+id/startButtonTourist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:background="@color/operator"
+        android:minHeight="48dp"
+        android:text="Турист"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/startButtonOperator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:background="@color/operator"
+        android:minHeight="48dp"
+        android:text="Оператор"
+        android:textColor="#ffffff" />
+
+
+</LinearLayout>

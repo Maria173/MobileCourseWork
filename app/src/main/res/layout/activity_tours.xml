@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".ToursActivity">
+
+    <ListView
+        android:id="@+id/toursListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+    <Button
+        android:id="@+id/toursButtonAdd"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:layout_weight="3"
+        android:background="@color/operator"
+        android:minHeight="48dp"
+        android:text="Добавить"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/toursButtonChange"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:layout_weight="3"
+        android:background="@color/operator"
+        android:minHeight="48dp"
+        android:text="Изменить"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/toursButtonDelete"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:layout_weight="3"
+        android:background="@color/operator"
+        android:minHeight="48dp"
+        android:text="Удалить"
+        android:textColor="#ffffff" />
+</LinearLayout>
