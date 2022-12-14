@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".ReportsMainActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="310dp"
+        android:minHeight="410dp"
+        app:srcCompat="@drawable/airplane" />
+    <Button
+        android:id="@+id/reportsButtonStops"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:background="@color/operator"
+        android:minHeight="48dp"
+        android:text="Остановки по гидам"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/reportsButtonTours"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:background="@color/operator"
+        android:minHeight="48dp"
+        android:text="Туры по выбранным гидам"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/reportsButtonAllUsers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:background="@color/operator"
+        android:minHeight="48dp"
+        android:text="Все пользователи"
+        android:textColor="#ffffff" />
+</LinearLayout>

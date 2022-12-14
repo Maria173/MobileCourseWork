@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLinerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".MainOperatorActivity">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="410dp"
+        android:minHeight="410dp"
+        app:srcCompat="@drawable/airplane" />
+
+    <Button
+        android:id="@+id/mainButtonGuide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:background="@color/operator"
+        android:minHeight="48dp"
+        android:text="Гиды"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/mainButtonTour"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:background="@color/operator"
+        android:minHeight="48dp"
+        android:text="Туры"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/mainButtonStop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:background="@color/operator"
+        android:minHeight="48dp"
+        android:text="Остановки"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/mainButtonReports"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:background="@color/operator"
+        android:minHeight="48dp"
+        android:text="Отчеты"
+        android:textColor="#ffffff" />
+
+</LinearLayout>
