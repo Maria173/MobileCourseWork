@@ -61,28 +61,6 @@ public class AutorizationOperatorActivity extends AppCompatActivity {
         reg.setOnClickListener(v -> {
             Intent intent = new Intent(this, RegistrationOperatorActivity.class);
             startActivity(intent);
-//            String log = login.getText().toString();
-//            String pas = password.getText().toString();
-//            if (log.equals("") || pas.equals("") ||
-//                    log.length() < 4 || pas.length() < 4){
-//                Toast.makeText(this, "Введите логин и пароль, минимальная длина логина и пароля 4 символа",
-//                        Toast.LENGTH_LONG).show();
-//            }
-//            else{
-//                Operator operator = new Operator();
-//                operator.setLogin(log);
-//                operator.setPassword(pas);
-//                operator.setRole("user");
-//                boolean ret = operatorData.registration(operator);
-//                if (ret){
-//                    Toast.makeText(this, "Регистрация успешна",
-//                            Toast.LENGTH_LONG).show();
-//                }
-//                else{
-//                    Toast.makeText(this, "Пользователь с таким логином уже существует",
-//                            Toast.LENGTH_LONG).show();
-//                }
-//            }
         });
     }
 }

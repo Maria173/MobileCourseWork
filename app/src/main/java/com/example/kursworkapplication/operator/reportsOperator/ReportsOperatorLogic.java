@@ -5,16 +5,7 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
-import com.example.kursworkapplication.data.CutleriesData;
-import com.example.kursworkapplication.data.Cutlery;
-import com.example.kursworkapplication.data.Lunch;
-import com.example.kursworkapplication.data.LunchesData;
-import com.example.kursworkapplication.data.OrdersData;
-import com.example.kursworkapplication.data.Reports.allUsersUnit;
-import com.example.kursworkapplication.data.Reports.cutleriesOrders;
-import com.example.kursworkapplication.data.Reports.lunchesOrders;
-import com.example.kursworkapplication.data.User;
-import com.example.kursworkapplication.data.UserData;
+
 import com.example.kursworkapplication.operator.GuidesData;
 import com.example.kursworkapplication.operator.Operator;
 import com.example.kursworkapplication.operator.OperatorData;

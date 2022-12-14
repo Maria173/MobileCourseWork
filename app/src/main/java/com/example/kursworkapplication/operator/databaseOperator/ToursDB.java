@@ -6,10 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.kursworkapplication.data.DBs.LunchesDB;
-import com.example.kursworkapplication.data.Lunch;
-import com.example.kursworkapplication.data.Order;
-import com.example.kursworkapplication.data.User;
 import com.example.kursworkapplication.operator.Guide;
 import com.example.kursworkapplication.operator.Operator;
 import com.example.kursworkapplication.operator.Tour;

@@ -2,9 +2,6 @@ package com.example.kursworkapplication.operator;
 
 import android.content.Context;
 
-import com.example.kursworkapplication.data.DBs.LunchesDB;
-import com.example.kursworkapplication.data.Lunch;
-import com.example.kursworkapplication.data.User;
 import com.example.kursworkapplication.operator.databaseOperator.ToursDB;
 
 import java.util.ArrayList;

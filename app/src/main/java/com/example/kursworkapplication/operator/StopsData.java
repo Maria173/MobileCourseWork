@@ -2,9 +2,6 @@ package com.example.kursworkapplication.operator;
 
 import android.content.Context;
 
-import com.example.kursworkapplication.data.Cutlery;
-import com.example.kursworkapplication.data.DBs.CutleriesDB;
-import com.example.kursworkapplication.data.User;
 import com.example.kursworkapplication.operator.databaseOperator.StopsDB;
 
 import java.util.ArrayList;

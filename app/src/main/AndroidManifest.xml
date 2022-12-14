@@ -115,6 +115,15 @@
         <activity
             android:name=".ReportsMainActivity"
             android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ReportsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".reportUsersActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

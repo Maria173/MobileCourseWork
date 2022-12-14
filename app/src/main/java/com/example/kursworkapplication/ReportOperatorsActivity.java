@@ -27,8 +27,6 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.kursworkapplication.data.Reports.ReportsLogic;
-import com.example.kursworkapplication.data.Reports.allUsersUnit;
 import com.example.kursworkapplication.operator.reportsOperator.ReportsOperatorLogic;
 import com.example.kursworkapplication.operator.reportsOperator.allOperatorsUnit;
 import com.itextpdf.text.Document;
