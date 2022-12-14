@@ -34,26 +34,25 @@ public class ExcursionActivity extends AppCompatActivity {
         id = intent.getIntExtra("Id", -1);
 
         Button save = findViewById(R.id.excursionButtonSave);
-        TextView calorie = findViewById(R.id.excursionEditTextCalorie);
-        TextView wishes = findViewById(R.id.excursionEditTextWishes);
+        TextView name = findViewById(R.id.excursionEditTextName);
+        TextView type = findViewById(R.id.excursionEditTextType);
 
         if (id != -1){
             Excursion excursion = excursionsData.getExcursion(id, login);
             if (excursion != null){
-                calorie.setText(String.valueOf(excursion.getCalorie()));
-                wishes.setText(excursion.getWishes());
+                name.setText(excursion.getName());
+                type.setText(excursion.getType());
             }
         }
 
         save.setOnClickListener(v -> {
-            if (calorie.getText().toString().equals("") ||
-                    !android.text.TextUtils.isDigitsOnly(calorie.getText().toString())){
-                Toast.makeText(this, "Калории не должны быть пустым числом",
+            if (name.getText().toString().equals("")) {
+                Toast.makeText(this, "Название не должно быть пустой строкой",
                         Toast.LENGTH_LONG).show();
                 return;
             }
-            int cal = Integer.parseInt(calorie.getText().toString());
-            String wish = wishes.getText().toString();
+            String cal = name.getText().toString();
+            String wish = type.getText().toString();
             if (id != -1){
                 excursionsData.updateExcursion(id, cal, wish, login);
             }

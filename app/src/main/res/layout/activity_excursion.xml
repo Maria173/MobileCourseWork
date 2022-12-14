@@ -6,18 +6,18 @@
     android:layout_height="match_parent"
     android:background="@color/teal_200"
     android:orientation="vertical"
-    tools:context=".OrderActivity">
+    tools:context=".ExcursionActivity">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Каллорийность:"
+        android:text="Название"
         android:textColor="#D67777"
         android:textSize="18sp" />
 
     <EditText
-        android:id="@+id/excursionEditTextCalorie"
+        android:id="@+id/excursionEditTextName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -30,12 +30,12 @@
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Пожелания"
+        android:text="Тип"
         android:textColor="#D67777"
         android:textSize="18sp" />
 
     <EditText
-        android:id="@+id/excursionEditTextWishes"
+        android:id="@+id/excursionEditTextType"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"

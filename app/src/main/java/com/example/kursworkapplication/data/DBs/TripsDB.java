@@ -31,14 +31,14 @@ public class TripsDB {
         null, null, null);
         if (c.moveToFirst()){
             int idIndex = c.getColumnIndex("id");
-            int priIndex = c.getColumnIndex("price");
-            int weiIndex = c.getColumnIndex("weight");
+            int priIndex = c.getColumnIndex("name");
+            int weiIndex = c.getColumnIndex("days");
             int userLoginIndex = c.getColumnIndex("userLogin");
-            int ordIdIndex = c.getColumnIndex("order_id");
+            int ordIdIndex = c.getColumnIndex("excursion_id");
             Trip lun = new Trip();
             lun.setId(c.getInt(idIndex));
-            lun.setPrice(c.getInt(priIndex));
-            lun.setWeight(c.getInt(weiIndex));
+            lun.setName(c.getString(priIndex));
+            lun.setDays(c.getInt(weiIndex));
             lun.setUserLogin(c.getString(userLoginIndex));
             lun.setExcursion_id(c.getInt(ordIdIndex));
             if (lun.getUserLogin().equals(trip.getUserLogin())){
@@ -53,10 +53,10 @@ public class TripsDB {
     public void add(Trip trip){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put("price", trip.getPrice());
-        cv.put("weight", trip.getWeight());
+        cv.put("name", trip.getName());
+        cv.put("days", trip.getDays());
         cv.put("userLogin", trip.getUserLogin());
-        cv.put("order_id", trip.getExcursion_id());
+        cv.put("excursion_id", trip.getExcursion_id());
         long tripId = db.insert("trips", null, cv);
         dbHelper.close();
     }
@@ -67,10 +67,10 @@ public class TripsDB {
         }
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put("price", trip.getPrice());
-        cv.put("weight", trip.getWeight());
+        cv.put("name", trip.getName());
+        cv.put("days", trip.getDays());
         cv.put("userLogin", trip.getUserLogin());
-        cv.put("order_id", trip.getExcursion_id());
+        cv.put("excursion_id", trip.getExcursion_id());
         db.update("trips", cv, "id = ?", new String[] {String.valueOf(trip.getId())});
         dbHelper.close();
     }
@@ -86,7 +86,7 @@ public class TripsDB {
 
     public void delete(Excursion excursion){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        db.delete("trips", "order_id = " + excursion.getId(), null);
+        db.delete("trips", "excursion_id = " + excursion.getId(), null);
         dbHelper.close();
     }
 
@@ -97,15 +97,15 @@ public class TripsDB {
                 new String[] {user.getLogin()}, null, null, null);
         if (c.moveToFirst()){
             int idIndex = c.getColumnIndex("id");
-            int priIndex = c.getColumnIndex("price");
-            int weiIndex = c.getColumnIndex("weight");
+            int priIndex = c.getColumnIndex("name");
+            int weiIndex = c.getColumnIndex("days");
             int userLoginIndex = c.getColumnIndex("userLogin");
-            int ordIdIndex = c.getColumnIndex("order_id");
+            int ordIdIndex = c.getColumnIndex("excursion_id");
             do{
                 Trip lun = new Trip();
                 lun.setId(c.getInt(idIndex));
-                lun.setPrice(c.getInt(priIndex));
-                lun.setWeight(c.getInt(weiIndex));
+                lun.setName(c.getString(priIndex));
+                lun.setDays(c.getInt(weiIndex));
                 lun.setUserLogin(c.getString(userLoginIndex));
                 lun.setExcursion_id(c.getInt(ordIdIndex));
                 retList.add(lun);
@@ -125,15 +125,15 @@ public class TripsDB {
                 null, null, null);
         if (c.moveToFirst()){
             int idIndex = c.getColumnIndex("id");
-            int priIndex = c.getColumnIndex("price");
-            int weiIndex = c.getColumnIndex("weight");
+            int priIndex = c.getColumnIndex("name");
+            int weiIndex = c.getColumnIndex("days");
             int userLoginIndex = c.getColumnIndex("userLogin");
-            int ordIdIndex = c.getColumnIndex("order_id");
+            int ordIdIndex = c.getColumnIndex("excursion_id");
             do{
                 Trip lun = new Trip();
                 lun.setId(c.getInt(idIndex));
-                lun.setPrice(c.getInt(priIndex));
-                lun.setWeight(c.getInt(weiIndex));
+                lun.setName(c.getString(priIndex));
+                lun.setDays(c.getInt(weiIndex));
                 lun.setUserLogin(c.getString(userLoginIndex));
                 lun.setExcursion_id(c.getInt(ordIdIndex));
                 retList.add(lun);
@@ -153,10 +153,10 @@ public class TripsDB {
         public void onCreate(SQLiteDatabase db) {
             db.execSQL("create table trips ("
                     + "id integer primary key autoincrement,"
-                    + "price integer,"
-                    + "weight integer,"
+                    + "name text,"
+                    + "days integer,"
                     + "userLogin text,"
-                    + "order_id integer" + ");");
+                    + "excursion_id integer" + ");");
         }
 
         @Override

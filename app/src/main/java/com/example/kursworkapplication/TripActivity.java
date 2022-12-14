@@ -40,8 +40,8 @@ public class TripActivity extends AppCompatActivity {
         id = intent.getIntExtra("Id", -1);
 
         Button save = findViewById(R.id.tripButtonSave);
-        TextView price = findViewById(R.id.tripEditTextPrice);
-        TextView weight = findViewById(R.id.tripEditTextWeight);
+        TextView name = findViewById(R.id.tripEditTextName);
+        TextView days = findViewById(R.id.tripEditTextDays);
         Spinner spinner = findViewById(R.id.tripSpinner);
 
         ArrayAdapter<Excursion> adapter = new ArrayAdapter(this,
@@ -52,8 +52,8 @@ public class TripActivity extends AppCompatActivity {
         if (id != -1){
             Trip trip = tripsData.getTrip(id, login);
             if (trip != null){
-                price.setText(String.valueOf(trip.getPrice()));
-                weight.setText(String.valueOf(trip.getWeight()));
+                name.setText(trip.getName());
+                days.setText(String.valueOf(trip.getDays()));
                 for (int i = 0; i < adapter.getCount(); ++i){
                     if(adapter.getItem(i).getId() == trip.getExcursion_id()){
                         spinner.setSelection(i);
@@ -64,20 +64,20 @@ public class TripActivity extends AppCompatActivity {
         }
 
         save.setOnClickListener(v -> {
-            if (price.getText().toString().equals("") ||
-                    !android.text.TextUtils.isDigitsOnly(price.getText().toString())){
-                Toast.makeText(this, "цена должна быть не пустым числом",
+            if (name.getText().toString().equals("") ||
+                    !android.text.TextUtils.isDigitsOnly(name.getText().toString())){
+                Toast.makeText(this, "название должно быть не пустой строкой",
                         Toast.LENGTH_LONG).show();
                 return;
             }
-            if (weight.getText().toString().equals("") ||
-                    !android.text.TextUtils.isDigitsOnly(weight.getText().toString())){
-                Toast.makeText(this, "вес должен быть не пустым числом",
+            if (days.getText().toString().equals("") ||
+                    !android.text.TextUtils.isDigitsOnly(days.getText().toString())){
+                Toast.makeText(this, "количество дней должно быть не пустым числом",
                         Toast.LENGTH_LONG).show();
                 return;
             }
-            int pr = Integer.parseInt(price.getText().toString());
-            int we = Integer.parseInt(weight.getText().toString());
+            String pr = name.getText().toString();
+            int we = Integer.parseInt(days.getText().toString());
             if (id != -1){
                 tripsData.updateTrip(id, pr, we, login,
                         adapter.getItem((int) spinner.getSelectedItemId()).getId());

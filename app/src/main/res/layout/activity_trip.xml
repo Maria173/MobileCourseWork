@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/teal_200"
     android:orientation="vertical"
-    tools:context=".LunchActivity">
+    tools:context=".TripActivity">
 
     <Spinner
         android:id="@+id/tripSpinner"
@@ -18,12 +18,12 @@
         android:id="@+id/textView6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Цена"
+        android:text="Название"
         android:textColor="#D67777"
         android:textSize="18sp" />
 
     <EditText
-        android:id="@+id/tripEditTextPrice"
+        android:id="@+id/tripEditTextName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -37,12 +37,12 @@
         android:id="@+id/textView7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Вес"
+        android:text="Количество дней"
         android:textColor="#D67777"
-        android:textSize="18sp"/>
+        android:textSize="18sp" />
 
     <EditText
-        android:id="@+id/tripEditTextWeight"
+        android:id="@+id/tripEditTextDays"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"

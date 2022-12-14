@@ -30,21 +30,21 @@ public class TripsData {
         ord.setLogin(userLogin);
         return tripsDB.readAllUsers(ord);
     }
-    public void addTrip(int price, int weight, String userLogin, int excursion_id){
+    public void addTrip(String name, int days, String userLogin, int excursion_id){
         Trip trip = new Trip();
         trip.setUserLogin(userLogin);
-        trip.setPrice(price);
-        trip.setWeight(weight);
+        trip.setName(name);
+        trip.setDays(days);
         trip.setExcursion_id(excursion_id);
         tripsDB.add(trip);
         readAll(userLogin);
     }
-    public void updateTrip(int id, int price, int weight, String userLogin, int excursion_id){
+    public void updateTrip(int id, String name, int days, String userLogin, int excursion_id){
         Trip trip = new Trip();
         trip.setId(id);
         trip.setUserLogin(userLogin);
-        trip.setPrice(price);
-        trip.setWeight(weight);
+        trip.setName(name);
+        trip.setDays(days);
         trip.setExcursion_id(excursion_id);
         tripsDB.update(trip);
         readAll(userLogin);

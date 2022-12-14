@@ -55,7 +55,7 @@ public class reportChoseExcursionsActivity extends AppCompatActivity {
                 }
             }
             if (excursions.size() == 0){
-                Toast.makeText(this, "Хотя бы один заказ должен быть выбран",
+                Toast.makeText(this, "Хотя бы одно путешествие должно быть выбрано",
                         Toast.LENGTH_LONG).show();
                 return;
             }

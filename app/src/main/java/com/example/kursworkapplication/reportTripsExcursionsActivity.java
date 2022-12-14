@@ -79,13 +79,13 @@ public class reportTripsExcursionsActivity extends AppCompatActivity {
                 TableRow.LayoutParams.MATCH_PARENT,
                 TableRow.LayoutParams.WRAP_CONTENT));
         TextView h1 = new TextView(this);
-        h1.setText("Заказ");
+        h1.setText("Экскурсия");
         h1.setTextSize(18);
         h1.setTextColor(Color.parseColor("#D67777"));
         h1.setPadding(10, 5, 0, 0);
         head.addView(h1);
         TextView h2 = new TextView(this);
-        h2.setText("Обед");
+        h2.setText("Путешествие");
         h2.setTextSize(18);
         h2.setTextColor(Color.parseColor("#D67777"));
         h2.setPadding(20, 5, 0, 0);

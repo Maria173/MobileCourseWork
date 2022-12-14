@@ -34,13 +34,13 @@ public class ExcursionsDB {
                 null, null, null);
         if (c.moveToFirst()){
             int idIndex = c.getColumnIndex("id");
-            int calIndex = c.getColumnIndex("calorie");
-            int wishIndex = c.getColumnIndex("wishes");
+            int calIndex = c.getColumnIndex("name");
+            int wishIndex = c.getColumnIndex("type");
             int userLoginIndex = c.getColumnIndex("userLogin");
             Excursion ord = new Excursion();
             ord.setId(c.getInt(idIndex));
-            ord.setCalorie(c.getInt(calIndex));
-            ord.setWishes(c.getString(wishIndex));
+            ord.setName(c.getString(calIndex));
+            ord.setType(c.getString(wishIndex));
             ord.setUserLogin(c.getString(userLoginIndex));
             if (ord.getUserLogin().equals(excursion.getUserLogin())){
                 dbHelper.close();
@@ -54,8 +54,8 @@ public class ExcursionsDB {
     public void add(Excursion excursion){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put("calorie", excursion.getCalorie());
-        cv.put("wishes", excursion.getWishes());
+        cv.put("name", excursion.getName());
+        cv.put("type", excursion.getType());
         cv.put("userLogin", excursion.getUserLogin());
         long excursionId = db.insert("excursions", null, cv);
         dbHelper.close();
@@ -67,8 +67,8 @@ public class ExcursionsDB {
         }
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put("calorie", excursion.getCalorie());
-        cv.put("wishes", excursion.getWishes());
+        cv.put("name", excursion.getName());
+        cv.put("type", excursion.getType());
         cv.put("userLogin", excursion.getUserLogin());
         db.update("excursions", cv, "id = ?", new String[] {String.valueOf(excursion.getId())});
         dbHelper.close();
@@ -92,14 +92,14 @@ public class ExcursionsDB {
                 new String[] {user.getLogin()}, null, null, null);
         if (c.moveToFirst()){
             int idIndex = c.getColumnIndex("id");
-            int calIndex = c.getColumnIndex("calorie");
-            int wishIndex = c.getColumnIndex("wishes");
+            int calIndex = c.getColumnIndex("name");
+            int wishIndex = c.getColumnIndex("type");
             int userLoginIndex = c.getColumnIndex("userLogin");
             do{
                 Excursion excursion = new Excursion();
                 excursion.setId(c.getInt(idIndex));
-                excursion.setCalorie(c.getInt(calIndex));
-                excursion.setWishes(c.getString(wishIndex));
+                excursion.setName(c.getString(calIndex));
+                excursion.setType(c.getString(wishIndex));
                 excursion.setUserLogin(c.getString(userLoginIndex));
                 retList.add(excursion);
             } while(c.moveToNext());
@@ -118,14 +118,14 @@ public class ExcursionsDB {
                 null, null, null);
         if (c.moveToFirst()){
             int idIndex = c.getColumnIndex("id");
-            int calIndex = c.getColumnIndex("calorie");
-            int wishIndex = c.getColumnIndex("wishes");
+            int calIndex = c.getColumnIndex("name");
+            int wishIndex = c.getColumnIndex("type");
             int userLoginIndex = c.getColumnIndex("userLogin");
             do{
                 Excursion excursion = new Excursion();
                 excursion.setId(c.getInt(idIndex));
-                excursion.setCalorie(c.getInt(calIndex));
-                excursion.setWishes(c.getString(wishIndex));
+                excursion.setName(c.getString(calIndex));
+                excursion.setType(c.getString(wishIndex));
                 excursion.setUserLogin(c.getString(userLoginIndex));
                 retList.add(excursion);
             } while(c.moveToNext());
@@ -137,15 +137,15 @@ public class ExcursionsDB {
     class DBHelper extends SQLiteOpenHelper {
 
         public DBHelper(Context context) {
-            super(context, "kursDBExcursions", null, 1);
+            super(context, "kursDBExcursions1", null, 2);
         }
 
         @Override
         public void onCreate(SQLiteDatabase db) {
             db.execSQL("create table excursions ("
                     + "id integer primary key autoincrement,"
-                    + "calorie integer,"
-                    + "wishes text,"
+                    + "name text,"
+                    + "type text,"
                     + "userLogin text" + ");");
         }
 

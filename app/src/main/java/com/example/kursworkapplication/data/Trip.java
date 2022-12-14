@@ -4,15 +4,15 @@ import java.time.LocalDateTime;
 
 public class Trip {
     private int id;
-    private int price;
-    private int weight;
+    private String name;
+    private int days;
     private String userLogin;
-    private int order_id;
+    private int excursion_id;
 
     @Override
     public String toString(){
-        return String.format("Trip = {Id = %d, price = %d, weight = %d}",
-                id, price, weight);
+        return String.format("Trip = {Id = %d, name = %s, days = %d}",
+                id, name, days);
     }
 
     public int getId() {
@@ -23,20 +23,20 @@ public class Trip {
         this.id = id;
     }
 
-    public int getPrice() {
-        return price;
+    public String getName() {
+        return name;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getWeight() {
-        return weight;
+    public int getDays() {
+        return days;
     }
 
-    public void setWeight(int weight) {
-        this.weight = weight;
+    public void setDays(int days) {
+        this.days = days;
     }
 
     public String getUserLogin() {
@@ -48,10 +48,10 @@ public class Trip {
     }
 
     public int getExcursion_id() {
-        return order_id;
+        return excursion_id;
     }
 
-    public void setExcursion_id(int order_id) {
-        this.order_id = order_id;
+    public void setExcursion_id(int excursion_id) {
+        this.excursion_id = excursion_id;
     }
 }

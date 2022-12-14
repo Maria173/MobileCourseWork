@@ -33,20 +33,20 @@ public class ExcursionsData {
         return excursionsDB.readAllUsers(ord);
     }
 
-    public void addExcursion(int calorie, String wishes, String userLogin){
+    public void addExcursion(String name, String type, String userLogin){
         Excursion excursion = new Excursion();
-        excursion.setCalorie(calorie);
+        excursion.setName(name);
         excursion.setUserLogin(userLogin);
-        excursion.setWishes(wishes);
+        excursion.setType(type);
         excursionsDB.add(excursion);
         readAll(userLogin);
     }
-    public void updateExcursion(int id, int calorie, String wishes, String userLogin){
+    public void updateExcursion(int id, String name, String type, String userLogin){
         Excursion excursion = new Excursion();
         excursion.setId(id);
-        excursion.setCalorie(calorie);
+        excursion.setName(name);
         excursion.setUserLogin(userLogin);
-        excursion.setWishes(wishes);
+        excursion.setType(type);
         excursionsDB.update(excursion);
         readAll(userLogin);
     }
