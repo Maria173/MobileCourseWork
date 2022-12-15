@@ -11,10 +11,11 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="match_parent"
+        android:layout_height="310dp"
         android:minHeight="410dp"
         app:srcCompat="@drawable/airplane" />
+
     <TextView
         android:id="@+id/textView7"
         android:layout_width="match_parent"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_200"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".ExcursionsActivity">
 
@@ -21,10 +21,10 @@
         android:layout_marginTop="3dp"
         android:layout_marginBottom="3dp"
         android:layout_weight="3"
-        android:background="@color/purple_500"
+        android:background="@color/operator"
         android:minHeight="48dp"
         android:text="Добавить"
-        android:textColor="#263238" />
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/excursionsButtonChange"
@@ -33,10 +33,10 @@
         android:layout_marginTop="3dp"
         android:layout_marginBottom="3dp"
         android:layout_weight="3"
-        android:background="@color/purple_500"
+        android:background="@color/operator"
         android:minHeight="48dp"
         android:text="Изменить"
-        android:textColor="#263238" />
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/excursionsButtonDelete"
@@ -45,8 +45,8 @@
         android:layout_marginTop="3dp"
         android:layout_marginBottom="3dp"
         android:layout_weight="3"
-        android:background="@color/purple_500"
+        android:background="@color/operator"
         android:minHeight="48dp"
         android:text="Удалить"
-        android:textColor="#263238" />
+        android:textColor="#FFFFFF" />
 </LinearLayout>
