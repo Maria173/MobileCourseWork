@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_200"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".ExcursionActivity">
 
@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Название"
-        android:textColor="#D67777"
+        android:textColor="#9944cc"
         android:textSize="18sp" />
 
     <EditText
@@ -23,7 +23,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:textColor="#D67777"
+        android:textColor="#9944cc"
         android:textSize="24sp" />
 
     <TextView
@@ -31,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Тип"
-        android:textColor="#D67777"
+        android:textColor="#9944cc"
         android:textSize="18sp" />
 
     <EditText
@@ -41,7 +41,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="70dp"
-        android:textColor="#D67777"
+        android:textColor="#9944cc"
         android:textSize="24sp" />
 
     <Button
@@ -50,8 +50,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:layout_marginBottom="3dp"
-        android:background="@color/purple_500"
+        android:background="@color/operator"
         android:minHeight="48dp"
         android:text="Сохранить"
-        android:textColor="#263238" />
+        android:textColor="#FFFFFF" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="match_parent"
+        android:layout_height="310dp"
+        android:minHeight="410dp"
+        app:srcCompat="@drawable/airplane" />
 </LinearLayout>

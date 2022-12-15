@@ -69,6 +69,7 @@
         android:minHeight="48dp"
         android:text="Сохранить"
         android:textColor="#ffffff" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"

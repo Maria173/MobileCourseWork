@@ -4,9 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_200"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".ReportsActivity">
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="match_parent"
+        android:layout_height="310dp"
+        android:minHeight="410dp"
+        app:srcCompat="@drawable/airplane" />
 
     <Button
         android:id="@+id/reportsButtonPlaces"
@@ -14,10 +21,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:layout_marginBottom="3dp"
-        android:background="@color/purple_500"
+        android:background="@color/operator"
         android:minHeight="48dp"
         android:text="Посещенные места по экскурсиям"
-        android:textColor="#263238" />
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/reportsButtonTrips"
@@ -25,10 +32,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:layout_marginBottom="3dp"
-        android:background="@color/purple_500"
+        android:background="@color/operator"
         android:minHeight="48dp"
         android:text="Путешествия по выбранным экскурсиям"
-        android:textColor="#263238" />
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/reportsButtonAllUsers"
@@ -36,8 +43,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:layout_marginBottom="3dp"
-        android:background="@color/purple_500"
+        android:background="@color/operator"
         android:minHeight="48dp"
         android:text="Все пользователи"
-        android:textColor="#263238" />
+        android:textColor="#FFFFFF" />
 </LinearLayout>

@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_200"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".reportPlacesExcursionsActivity">
 
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:scrollbars="none"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:scrollbars="none">
 
         <TableLayout
             android:id="@+id/reportPlacesExcursionsTable"
@@ -40,17 +40,16 @@
     </ScrollView>
 
 
-
     <Button
         android:id="@+id/reportPlacesExcursionsToPdf"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="8"
         android:layout_marginTop="3dp"
         android:layout_marginBottom="3dp"
-        android:background="@color/purple_500"
+        android:layout_weight="8"
+        android:background="@color/operator"
         android:minHeight="48dp"
         android:text="Сохранить в pdf"
-        android:textColor="#263238" />
+        android:textColor="#FFFFFF" />
 
 </LinearLayout>
