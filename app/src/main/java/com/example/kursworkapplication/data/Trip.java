@@ -11,7 +11,7 @@ public class Trip {
 
     @Override
     public String toString(){
-        return String.format("Trip = {Id = %d, name = %s, days = %d}",
+        return String.format("Путешествие: Id: %d, название: %s",
                 id, name, days);
     }
 

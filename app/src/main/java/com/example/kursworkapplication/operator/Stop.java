@@ -9,7 +9,7 @@ public class Stop {
 
     @Override
     public String toString(){
-        return String.format("Stop = {Id = %d, price = %d, name = %s}",
+        return String.format("Остановка: Id: %d, стоимость: %d, название: %s",
                 id, price, nameStop);
     }
 

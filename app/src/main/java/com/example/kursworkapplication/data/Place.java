@@ -9,7 +9,7 @@ public class Place {
 
     @Override
     public String toString(){
-        return String.format("Place = {Id = %d, name = %s, count = %d}",
+        return String.format("Посещенное место: Id: %d, название: %s",
                 id, name, count);
     }
 

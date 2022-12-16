@@ -35,12 +35,18 @@ import com.example.kursworkapplication.data.Reports.allUsersUnit;
 import com.example.kursworkapplication.data.Reports.placesExcursions;
 import com.example.kursworkapplication.data.Reports.tripsExcursions;
 import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -53,12 +59,22 @@ public class reportTripsExcursionsActivity extends AppCompatActivity {
 
     private static final int PERMISSION_REQUEST_CODE = 200;
     private static final int PERMISSION_STORAGE = 101;
+    public static final String FONT = "/assets/fonts/arial.ttf";
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report_trips_excursions);
+        BaseFont bf= null;
+        try {
+            bf = BaseFont.createFont(FONT, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Font font=new Font(bf,30,Font.NORMAL);
 
         SharedPreferences sPref = getSharedPreferences("User", MODE_PRIVATE);
         SharedPreferences.Editor ed = sPref.edit();
@@ -148,8 +164,7 @@ public class reportTripsExcursionsActivity extends AppCompatActivity {
                 File gpxfile = new File(root,filename);  // generate pdf file in that directory
                 PdfWriter.getInstance(document,new FileOutputStream(gpxfile));
                 document.open();
-                Paragraph p3=new Paragraph();
-                p3.add("Trips by excursions");
+                Paragraph p3=new Paragraph("Путешествия по экскурсиям", font);
                 document.add(p3);
                 Paragraph p4=new Paragraph();
                 p4.add(" ");
@@ -160,12 +175,12 @@ public class reportTripsExcursionsActivity extends AppCompatActivity {
 
 
                 PdfPTable tablePdf = new PdfPTable(2);
-                tablePdf.addCell("Excursion");
-                tablePdf.addCell("Trip");
+                tablePdf.addCell(new Phrase(Element.ALIGN_LEFT,"Экскурсии",font));
+                tablePdf.addCell(new Phrase(Element.ALIGN_LEFT,"Путешествия",font));
 
                 for(tripsExcursions userUnit : list){
-                    tablePdf.addCell(userUnit.getExcursion());
-                    tablePdf.addCell(userUnit.getTrip());
+                    tablePdf.addCell(new Phrase(Element.ALIGN_LEFT,userUnit.getExcursion(),font));
+                    tablePdf.addCell(new Phrase(Element.ALIGN_LEFT,userUnit.getTrip(),font));
                 }
 
                 document.add(tablePdf);

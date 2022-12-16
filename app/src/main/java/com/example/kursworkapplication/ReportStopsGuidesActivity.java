@@ -32,12 +32,19 @@ import android.widget.Toast;
 import com.example.kursworkapplication.operator.reportsOperator.ReportsOperatorLogic;
 import com.example.kursworkapplication.operator.reportsOperator.stopsGuides;
 import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfEncodings;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 
@@ -49,12 +56,22 @@ public class ReportStopsGuidesActivity extends AppCompatActivity {
 
     private static final int PERMISSION_REQUEST_CODE = 200;
     private static final int PERMISSION_STORAGE = 101;
+    public static final String FONT = "/assets/fonts/arial.ttf";
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report_stops_guides);
+        BaseFont bf= null;
+        try {
+            bf = BaseFont.createFont(FONT, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Font font=new Font(bf,30,Font.NORMAL);
 
         SharedPreferences sPref = getSharedPreferences("Operator", MODE_PRIVATE);
         SharedPreferences.Editor ed = sPref.edit();
@@ -140,8 +157,7 @@ public class ReportStopsGuidesActivity extends AppCompatActivity {
                 File gpxfile = new File(root,filename);  // generate pdf file in that directory
                 PdfWriter.getInstance(document,new FileOutputStream(gpxfile));
                 document.open();
-                Paragraph p3=new Paragraph();
-                p3.add("Stops by guides");
+                Paragraph p3=new Paragraph("Остановки по гидам", font);
                 document.add(p3);
                 Paragraph p4=new Paragraph();
                 p4.add(" ");
@@ -152,12 +168,12 @@ public class ReportStopsGuidesActivity extends AppCompatActivity {
 
 
                 PdfPTable tablePdf = new PdfPTable(2);
-                tablePdf.addCell("Guide");
-                tablePdf.addCell("Stop");
+                tablePdf.addCell(new Phrase(Element.ALIGN_LEFT,"Гиды",font));
+                tablePdf.addCell(new Phrase(Element.ALIGN_LEFT,"Остановки",font));
 
                 for(stopsGuides stGui : list){
-                    tablePdf.addCell(stGui.getGuide());
-                    tablePdf.addCell(stGui.getStop());
+                    tablePdf.addCell(new Phrase(Element.ALIGN_LEFT,stGui.getGuide(),font));
+                    tablePdf.addCell(new Phrase(Element.ALIGN_LEFT,stGui.getStop(),font));
                 }
 
                 document.add(tablePdf);
