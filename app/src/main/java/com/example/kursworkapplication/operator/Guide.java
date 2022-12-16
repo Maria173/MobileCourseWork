@@ -8,8 +8,7 @@ public class Guide {
 
     @Override
     public String toString(){
-        return String.format("Гид: Id = %d, имя: %s, зарплата: %d",
-                id, nameGuide, salary);
+        return String.format("Гид: %s", nameGuide);
     }
 
     public int getId() {

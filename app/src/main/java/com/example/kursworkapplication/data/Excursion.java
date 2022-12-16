@@ -8,8 +8,7 @@ public class Excursion {
 
     @Override
     public String toString(){
-        return String.format("Экскурсия: Id: %d, название: %s",
-                id, name, type);
+        return String.format("Экскурсия: %s", name);
     }
 
     public int getId() {

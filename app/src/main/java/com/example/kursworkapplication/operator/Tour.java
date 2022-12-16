@@ -8,8 +8,7 @@ public class Tour {
 
     @Override
     public String toString(){
-        return String.format("Тур: Id: %d, название: %s",
-                id, name);
+        return String.format("Тур: %s", name);
     }
 
     public int getId() {

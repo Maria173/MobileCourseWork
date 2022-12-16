@@ -9,8 +9,7 @@ public class Stop {
 
     @Override
     public String toString(){
-        return String.format("Остановка: Id: %d, стоимость: %d, название: %s",
-                id, price, nameStop);
+        return String.format("Остановка: %s", nameStop);
     }
 
     public int getId() {
