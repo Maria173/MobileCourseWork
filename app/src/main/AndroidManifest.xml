@@ -32,6 +32,9 @@
             android:exported="false"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
+            android:name=".RegistrationActivity"
+            android:exported="false" />
+        <activity
             android:name=".RegistrationOperatorActivity"
             android:exported="false" />
         <activity

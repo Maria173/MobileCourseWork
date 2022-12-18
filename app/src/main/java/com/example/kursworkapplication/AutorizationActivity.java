@@ -14,14 +14,14 @@ import com.example.kursworkapplication.data.UserData;
 
 public class AutorizationActivity extends AppCompatActivity {
 
-    UserData userData;
+    UserData touristData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_autorization);
 
-        userData = new UserData(this);
+        touristData = new UserData(this);
         Button aut = findViewById(R.id.autorizationAut);
         Button reg = findViewById(R.id.autorizationReg);
         TextView login = findViewById(R.id.autEditTextLogin);
@@ -35,10 +35,10 @@ public class AutorizationActivity extends AppCompatActivity {
                         Toast.LENGTH_LONG).show();
             }
             else{
-                User user = new User();
-                user.setLogin(log);
-                user.setPassword(pas);
-                User ret = userData.authorization(user);
+                User tourist = new User();
+                tourist.setLogin(log);
+                tourist.setPassword(pas);
+                User ret = touristData.authorization(tourist);
                 if (ret == null){
                     Toast.makeText(this, "Пара логин пароль не верна или такого пользователя нет",
                             Toast.LENGTH_LONG).show();
@@ -59,28 +59,8 @@ public class AutorizationActivity extends AppCompatActivity {
         });
 
         reg.setOnClickListener(v -> {
-            String log = login.getText().toString();
-            String pas = password.getText().toString();
-            if (log.equals("") || pas.equals("") ||
-                log.length() < 4 || pas.length() < 4){
-                Toast.makeText(this, "Введите логин и пароль, минимальная длина логина и пароля 4 символа",
-                        Toast.LENGTH_LONG).show();
-            }
-            else{
-                User user = new User();
-                user.setLogin(log);
-                user.setPassword(pas);
-                user.setRole("user");
-                boolean ret = userData.registration(user);
-                if (ret){
-                    Toast.makeText(this, "Регистрация успешна",
-                            Toast.LENGTH_LONG).show();
-                }
-                else{
-                    Toast.makeText(this, "Пользователь с таким логином уже существует",
-                            Toast.LENGTH_LONG).show();
-                }
-            }
+            Intent intent = new Intent(this, RegistrationActivity.class);
+            startActivity(intent);
         });
     }
 }
